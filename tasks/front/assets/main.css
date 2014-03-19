@@ -1,0 +1,139 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+body {
+    /* Background and console styles from Eric Bidelman (ericbidelman@chromium.org) */
+    /* http://www.htmlfivewow.com/demos/terminal/terminal.html */
+    background: -webkit-radial-gradient(center center, contain, rgba(0,150,0,.5), black) center center no-repeat, black; /*center center for the gradient scrolls with the page :(*/
+    -webkit-background-size: 110% 100%;
+    background-attachment: fixed;
+
+    color: #0F0;
+    font-family: "Andale Mono", AndaleMono, monospace;
+    font-size: 13px;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+*::-moz-selection {color: yellow;  background: red;}
+*::selection      {color: yellow;  background: red;}
+
+#interlace {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: url(interlace.png) top left repeat, rgba(255,255,255,0.5);
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    z-index: 10;
+    pointer-events: none;   
+}
+h1, h2, h3, h4, h4, p, ul, li {
+    font-size: 1em;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    list-style-position: inside;
+    list-style-type: none;
+}
+.green {
+    color: lime;
+}
+.red {
+    color: red;
+}
+.cyan {
+    color: cyan;
+}
+.magenta {
+    color: magenta;
+}
+.yellow {
+    color: yellow;
+}
+.white {
+    color: white;
+}
+.black {
+    color: black;
+}
+.red-background {
+    background: red;
+}
+.green-background {
+    background: lime;
+}
+.magenta-background {
+    background: magenta;
+}
+.cyan-background {
+    background: cyan;
+}
+.yellow-background {
+    background: yellow;
+}
+
+
+.blink {
+    background-color: green;
+    -webkit-animation: blink 1s steps(2, start) infinite;
+    animation: blink 1s steps(2, start) infinite;
+}
+@-webkit-keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}
+@keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}
+
+
+.page .separator {
+    width: 100%;
+    overflow: hidden;
+}
+.page .separator:after {
+    content: "*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************";
+}
+.page .timeCompare {
+    display: table;
+}
+.page .timeCompare .left,
+.page .timeCompare .right {
+    display: table-cell;
+}
+.page .timeCompare .left {
+    text-align: right;
+}
+.page .timeCompare .right {
+    text-align: left;
+}
+.page .timeCompare .meter {
+    display: table-cell;
+}
+.page .filesRepartition {
+    display: table;
+}
+.page .filesRepartition .row {
+    display: table-row;
+}
+.page .filesRepartition .row > div {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    padding-right: 24px;
+}
+.page .graph {
+    position: relative;
+}
+.page .graph > div {
+    position: absolute;
+    top: 5px;
+    left: 16px;
+    width: 680px;
+    height: 124px;
+}

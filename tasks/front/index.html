@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>&gt; devperf</title>
+
+        <link rel="stylesheet" href="assets/main.css"/>
+
+        <script src="assets/jquery-2.1.0.min.js"></script>
+        <script src="assets/handlebars-v1.3.0.js"></script>
+        <script src="assets/highcharts.js"></script>
+        <script src="assets/main.js"></script>
+    </head>
+    <body>
+        <div id="interlace"></div>
+        <h1>&gt; devperf --author=gaelmetais</h1>
+        <div id="content">
+            <div id="pageContainer"></div>
+        </div>
+        &gt; <span class="blink">&nbsp;</span>
+
+    <script id="page-template" type="text/x-handlebars-template">
+        {{#each pages}}
+            <br>
+            <br>
+            <br>
+            <div class="page page{{@index}}">
+                <div class="separator"></div>
+                <h2>* Page : <a href="{{url}}" class="green">{{url}}</a></h2>
+                *<br>
+                <div class="timeCompare">
+                    <div>* <br>* </div>
+                    <div class="left"><h3>Temps total</h3><div>{{windowOnLoadTime}}ms</div></div>
+                    <div class="meter">
+                        {{meter timeFrontend windowOnLoadTime 2000 6000}}
+                    </div>
+                    <div class="right"><h3>Temps frontend</h3><div>{{timeFrontend}}ms</div></div>
+                </div>
+                * <br>
+                <h2>* Timings evolution:</h2>
+                <div class="loadTimeGraph">
+                    <div class="graph">
+                        *<br>*<br>*<br>*<br>*<br>*<br>*<br>*<br>*
+                        <div id="graph{{@index}}"></div>
+                    </div>
+                    <div class="legend">
+                        * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="cyan">timeToFirstByte</span>&nbsp;&nbsp;
+                        <span class="white">onDOMReadyTime</span>&nbsp;&nbsp;
+                        <span class="yellow">windowOnLoadTime</span>&nbsp;&nbsp;
+                        <span class="magenta">httpTrafficCompleted</span>
+                    </div>
+                </div>
+                * <br>
+                <h2>* Files repartition:</h2>
+                <div class="filesRepartition">
+                    <div class="row">
+                        <div>*&nbsp;</div>
+                        <div></div>
+                        <div class="white">CSS</div>
+                        <div class="white">JS</div>
+                        <div class="white">Images</div>
+                        <div class="white">Fonts</div>
+                        <div class="white">Total</div>
+                    </div>
+                    <div class="row">
+                        <div>*&nbsp;</div>
+                        <div class="white">Size </div>
+                        <div>{{cssSize}}</div>
+                        <div>{{jsSize}}</div>
+                        <div>{{imageSize}}</div>
+                        <div>{{webfontSize}}</div>
+                        <div>{{contentLength}}</div>
+                    </div>
+                    <div class="row">
+                        <div>*&nbsp;</div>
+                        <div class="white">Requests number </div>
+                        <div>{{cssCount}}</div>
+                        <div>{{jsCount}}</div>
+                        <div>{{imageCount}}</div>
+                        <div>{{webfontCount}}</div>
+                        <div>{{requests}}</div>
+                    </div>
+                </div>
+                * <br>
+                <div class="warnings">
+                    {{#if warnings}}
+                        <h2>* Warnings:</h2>
+                        <ul>
+                            {{#each warnings}}
+                                <li>*
+                                    <span class="red">- {{message}} : </span> 
+                                    <span class="">{{value}}</span>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    {{/if}}
+                </div>
+                * <br>
+                <div class="separator"></div>
+            </div>
+        {{/each}}
+    </script>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+{
+  "name": "grunt-devperf",
+  "description": "Helps front-end developers to maintain a good quality, based on phantomas and grunt-phantomas.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/gaelmetais/grunt-devperf",
+  "author": {
+    "name": "Gaël Métais",
+    "email": "gael@gaelmetais.com",
+    "url": "www.gaelmetais.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gaelmetais/grunt-devperf.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gaelmetais/grunt-devperf/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/gaelmetais/grunt-devperf/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt": "~0.4.4"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.4"
+  },
+  "dependencies": {
+    "grunt-phantomas": "~0.5.2"
+  },
+  "keywords": [
+    "gruntplugin",
+    "phantomas",
+    "performance",
+    "metrics",
+    "phantomjs"
+  ]
+}
