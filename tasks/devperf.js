@@ -162,7 +162,7 @@ module.exports = function(grunt) {
         {
           variable : "headersSentSize",
           limit : 20000,
-          message: "Reduce size of headers sents (cookies?)"
+          message: "Reduce size of headers sent (cookies?)"
         },
         {
           variable : "jQuerySizzleCalls",
@@ -178,7 +178,10 @@ module.exports = function(grunt) {
       phantomasConfig[sanitizeFolderName(url)] = {
         options: {
           indexPath: './' + dataRoot + '/' + sanitizeFolderName(url) + '/',
-          url: url
+          url: url,
+          options: {
+            timeout: 120
+          }
         }
       };
     });
