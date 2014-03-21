@@ -14,7 +14,7 @@ var dataRoot = 'devperf';
 var outputFile = dataRoot + '/results.json';
 
 module.exports = function(grunt) {
-  grunt.loadNpmTasks('grunt-phantomas');
+  require('grunt-phantomas/tasks/phantomas')(grunt);
 
   grunt.registerTask('devperfAfter', 'Task to run after phantomas', function() {
     
