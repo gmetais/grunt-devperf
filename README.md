@@ -1,6 +1,6 @@
 # grunt-devperf
 
-> Helps front-end developers to maintain a good quality, based on phantomas and grunt-phantomas.
+> Helps front-end developers to maintain a good quality, based on [phantomas](https://github.com/macbre/phantomas) and [grunt-phantomas](https://github.com/stefanjudis/grunt-phantomas).
 
 ## Getting Started
 This plugin requires Grunt `~0.4.4`
@@ -63,6 +63,9 @@ grunt.initConfig({
 });
 ```
 Then, open the /devperf/index.html file with your browser to see the results.
+
+Results snapshot :
+![grunt-devperf example results](https://raw.github.com/gmetais/grunt-devperf/master/demo/img/results.png)
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
