@@ -32,18 +32,18 @@ module.exports = function(grunt) {
     devperf: {
       options: {
         urls: [
-          'http://www.france2.fr',
-          'http://www.france3.fr',
-          'http://www.france4.fr',
-          'http://www.france5.fr',
-          'http://www.franceo.fr',
-          'http://pluzz.francetv.fr',
           'http://www.francetvinfo.fr',
           'http://www.francetvsport.fr',
           'http://culturebox.francetvinfo.fr',
           'http://www.france3.fr/emissions/plus-belle-la-vie',
           'http://programme-tv.francetv.fr/',
-          'http://alsace.france3.fr/'
+          'http://alsace.france3.fr/',
+          'http://pluzz.francetv.fr',
+          'http://www.france2.fr',
+          'http://www.france3.fr',
+          'http://www.france4.fr',
+          'http://www.france5.fr',
+          'http://www.franceo.fr'
         ]
       }
     },

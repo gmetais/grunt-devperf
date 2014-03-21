@@ -48,17 +48,17 @@ module.exports = function(grunt) {
           // Get all metrics for most recent data
           if (key === 0) {
             for (var metric in json) {
-              page[metric] = json[metric].average;
+              page[metric] = json[metric].median;
             }
           }
 
           // Get history for each
           page.timingsHistory.push({
             'timestamp': timestamp,
-            'timeToFirstByte': json.timeToFirstByte.average,
-            'onDOMReadyTime': json.onDOMReadyTime.average,
-            'windowOnLoadTime': json.windowOnLoadTime.average,
-            'httpTrafficCompleted': json.httpTrafficCompleted.average
+            'timeToFirstByte': json.timeToFirstByte.median,
+            'onDOMReadyTime': json.onDOMReadyTime.median,
+            'windowOnLoadTime': json.windowOnLoadTime.median,
+            'httpTrafficCompleted': json.httpTrafficCompleted.median
           });
         }
       });
@@ -179,6 +179,7 @@ module.exports = function(grunt) {
         options: {
           indexPath: './' + dataRoot + '/' + sanitizeFolderName(url) + '/',
           url: url,
+          numberOfRuns: 5,
           options: {
             timeout: 120
           }
