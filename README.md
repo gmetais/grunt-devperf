@@ -42,6 +42,18 @@ Default value: `'http://www.google.fr'`
 
 The list of URLs you want to test
 
+#### options.numberOfRuns
+Type: `Integer`
+Default value: `5`
+
+The number of times you want phantomas to call each page
+
+#### options.timeout
+Type: `Integer`
+Default value: `120`
+
+The time after which phantomas should cancel a run
+
 
 ### Usage Examples
 
@@ -57,7 +69,9 @@ grunt.initConfig({
         'http://www.france4.fr',
         'http://www.france5.fr'
         'http://www.franceo.fr'
-      ]
+      ],
+      numberOfRuns: 5,
+      timeout: 120
     }
   }
 });
@@ -72,3 +86,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 _Initial commit_
+
+## Author
+Gaël Métais. I'm a webperf freelance based in Paris.
+If you understand french, you can visit [my website](http://www.gaelmetais.com).
