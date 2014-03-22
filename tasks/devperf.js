@@ -70,10 +70,14 @@ module.exports = function(grunt) {
     fs.writeFileSync(outputFile, JSON.stringify({pages: pages}, null, 4));
     grunt.log.writeln('File "' + outputFile + '" created.');
 
+    // Write settings file for the front
+    var settingsFilePath = dataRoot + '/settings.json'
+    fs.writeFileSync(settingsFilePath, JSON.stringify(options, null, 4));
+    grunt.log.writeln('File "' + settingsFilePath + '" created.');
+
     // Copy assets
     var frontFilesPath = __dirname + '/front';
     console.log(frontFilesPath);
-    grunt.file.copy(frontFilesPath + '/index.html', dataRoot + '/index.html');
     grunt.file.copy(frontFilesPath + '/assets/main.js', dataRoot + '/assets/main.js');
     grunt.file.copy(frontFilesPath + '/assets/main.css', dataRoot + '/assets/main.css');
     grunt.file.copy(frontFilesPath + '/assets/interlace.png', dataRoot + '/assets/interlace.png');
@@ -82,10 +86,8 @@ module.exports = function(grunt) {
     grunt.file.copy(frontFilesPath + '/assets/highcharts.js', dataRoot + '/assets/highcharts.js');
     grunt.log.writeln('Assets copied.');
 
-    // Write settings file for the front
-    var settingsFilePath = dataRoot + '/settings.json'
-    fs.writeFileSync(settingsFilePath, JSON.stringify(options, null, 4));
-    grunt.log.writeln('File "' + settingsFilePath + '" created.');
+    // Write index.html
+    grunt.file.copy(frontFilesPath + '/index.html', dataRoot + '/index.html');
 
   });
 
@@ -169,7 +171,9 @@ module.exports = function(grunt) {
           limit : 300,
           message: "Reduce number of Sizzle calls (= jQuery DOM queries)"
         }
-      ]
+      ],
+      numberOfRuns: 5,
+      timeout: 120
     });
 
     // Inject the phantomas config into grunt config
@@ -179,9 +183,9 @@ module.exports = function(grunt) {
         options: {
           indexPath: './' + dataRoot + '/' + sanitizeFolderName(url) + '/',
           url: url,
-          numberOfRuns: 5,
+          numberOfRuns: options.numberOfRuns,
           options: {
-            timeout: 120
+            timeout: options.timeout
           }
         }
       };
