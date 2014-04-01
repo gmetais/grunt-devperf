@@ -87,7 +87,10 @@ module.exports = function(grunt) {
     grunt.log.writeln('Assets copied.');
 
     // Write index.html
-    grunt.file.copy(frontFilesPath + '/index.html', dataRoot + '/index.html');
+    var indexHtml = grunt.file.read(frontFilesPath + '/index.html');
+    indexHtml = indexHtml.replace('/*%%RESULTS%%*/', 'var results = ' + JSON.stringify({pages: pages}, null, 4));
+    indexHtml = indexHtml.replace('/*%%SETTINGS%%*/', 'var settings = ' + JSON.stringify(options, null, 4));
+    grunt.file.write(dataRoot + '/index.html', indexHtml);
 
   });
 
@@ -200,5 +203,10 @@ module.exports = function(grunt) {
 };
 
 function sanitizeFolderName(path) {
-  return path.replace(/[\/\.\?\:\-]/g, '');
+  var folderName = path.replace(/[\/\.\?\:\-]/g, '');
+  // Shorten name if it's too long
+  if (folderName.length > 50) {
+    folderName = folderName.substring(0, 50);
+  }
+  return folderName;
 }
