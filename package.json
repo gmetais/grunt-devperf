@@ -37,7 +37,7 @@
     "grunt": "~0.4.4"
   },
   "dependencies": {
-    "grunt-phantomas": "~0.5.2"
+    "grunt-phantomas": "~0.5.3"
   },
   "keywords": [
     "gruntplugin",
