@@ -84,8 +84,11 @@ Results snapshot :
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
-## Release History
-_Initial commit_
+## TODO
+- An option to open browser automaticaly when test is finished.
+- Find a way to show gziped file size
+- Add graphs for other metrics evolution over time (not just timings evolution)
+- Write tests
 
 ## Author
 Gaël Métais. I'm a webperf freelance based in Paris.
