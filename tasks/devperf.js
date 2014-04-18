@@ -35,7 +35,7 @@ module.exports = function(grunt) {
       var pageJsonFiles = fs.readdirSync(pageDataFolder);
 
       pageJsonFiles.sort(function(a, b) {
-        return parseInt(a) < parseInt(b) ? 1 : -1;
+        return parseInt(a, 10) < parseInt(b, 10) ? 1 : -1;
       }).forEach(function(jsonFileName, key) {
         if (jsonFileName.indexOf('.json') === 13) {
           var timestamp = jsonFileName.substring(0, 13);
@@ -48,17 +48,17 @@ module.exports = function(grunt) {
           // Get all metrics for most recent data
           if (key === 0) {
             for (var metric in json) {
-              page[metric] = json[metric].median;
+              page[metric] = json[metric].average;
             }
           }
 
           // Get history for each
           page.timingsHistory.push({
             'timestamp': timestamp,
-            'timeToFirstByte': json.timeToFirstByte.median,
-            'onDOMReadyTime': json.onDOMReadyTime.median,
-            'windowOnLoadTime': json.windowOnLoadTime.median,
-            'httpTrafficCompleted': json.httpTrafficCompleted.median
+            'timeToFirstByte': json.timeToFirstByte.average,
+            'onDOMReadyTime': json.onDOMReadyTime.average,
+            'windowOnLoadTime': json.windowOnLoadTime.average,
+            'httpTrafficCompleted': json.httpTrafficCompleted.average
           });
         }
       });
@@ -71,7 +71,7 @@ module.exports = function(grunt) {
     grunt.log.writeln('File "' + outputFile + '" created.');
 
     // Write settings file for the front
-    var settingsFilePath = dataRoot + '/settings.json'
+    var settingsFilePath = dataRoot + '/settings.json';
     fs.writeFileSync(settingsFilePath, JSON.stringify(options, null, 4));
     grunt.log.writeln('File "' + settingsFilePath + '" created.');
 
