@@ -77,7 +77,6 @@ module.exports = function(grunt) {
 
     // Copy assets
     var frontFilesPath = __dirname + '/front';
-    console.log(frontFilesPath);
     grunt.file.copy(frontFilesPath + '/assets/main.js', dataRoot + '/assets/main.js');
     grunt.file.copy(frontFilesPath + '/assets/main.css', dataRoot + '/assets/main.css');
     grunt.file.copy(frontFilesPath + '/assets/interlace.png', dataRoot + '/assets/interlace.png');
