@@ -94,8 +94,19 @@ module.exports = function(grunt) {
     var indexHtml = grunt.file.read(frontFilesPath + '/index.html');
     indexHtml = indexHtml.replace('/*%%RESULTS%%*/', 'var results = ' + JSON.stringify({pages: pages}, null, 4));
     indexHtml = indexHtml.replace('/*%%SETTINGS%%*/', 'var settings = ' + JSON.stringify(options, null, 4));
-    grunt.file.write(dataRoot + '/index.html', indexHtml);
+    var indexPath = dataRoot + '/index.html';
+    grunt.file.write(indexPath, indexHtml);
 
+    // Open the index.html file in browser (option)
+    if (options.openResults) {
+      require('grunt-open/tasks/open')(grunt);
+      
+      // Inject the config into devperfAfter task
+      grunt.config.set('open.devperf_auto_task', {path: indexPath});
+      grunt.task.run('open:devperf_auto_task');
+
+      console.log(grunt.config.get());
+    }
   });
 
 
@@ -180,7 +191,8 @@ module.exports = function(grunt) {
         }
       ],
       numberOfRuns: 5,
-      timeout: 120
+      timeout: 120,
+      openResults: false
     });
 
     // Inject the phantomas config into grunt config

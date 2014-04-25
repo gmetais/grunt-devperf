@@ -24,7 +24,8 @@ module.exports = function(grunt) {
         urls: [
           'http://www.google.com',
           'http://www.yahoo.com'
-        ]
+        ],
+        openResults: true
       }
     },
 

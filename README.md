@@ -54,6 +54,12 @@ Default value: `120`
 
 The time after which phantomas should cancel a run
 
+#### options.openResults
+Type: `Boolean`
+Default value: `false`
+
+Automatically opens the browser on the results page when the devperf task is finished.
+
 
 ### Usage Examples
 
@@ -71,14 +77,16 @@ grunt.initConfig({
         'http://www.franceo.fr'
       ],
       numberOfRuns: 5,
-      timeout: 120
+      timeout: 120,
+      openResults: true
     }
   }
 });
 ```
 Then, open the `/devperf/index.html` file with your browser to see the results.
 
-The entire results (including grunt-phantomas HTML and JSON reports) are in the `/devperf` folder. You might want to add this folder to your .gitignore file.
+The entire results (including grunt-phantomas HTML and JSON reports) are in the `/devperf` folder.
+You might want to add this folder to your .gitignore file.
 
 
 Results snapshot :
@@ -88,7 +96,6 @@ Results snapshot :
 This project is in very early stage (beta). You can help by reporting any issue, giving your feedback or coding new functionnalities.
 
 ## TODO
-- An option to open browser automaticaly when test is finished.
 - Find a way to show gziped file size
 - Add graphs for other metrics evolution over time (not just timings evolution)
 - Write tests
