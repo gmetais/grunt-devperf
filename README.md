@@ -76,13 +76,16 @@ grunt.initConfig({
   }
 });
 ```
-Then, open the /devperf/index.html file with your browser to see the results.
+Then, open the '/devperf/index.html' file with your browser to see the results.
+
+The entire results (including grunt-phantomas HTML and JSON reports) are in the '/devperf' folder. You might want to add this folder to your .gitignore file.
+
 
 Results snapshot :
 ![grunt-devperf example results](https://raw.github.com/gmetais/grunt-devperf/master/demo/img/results.png)
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## TODO
 - An option to open browser automaticaly when test is finished.
