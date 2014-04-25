@@ -76,9 +76,9 @@ grunt.initConfig({
   }
 });
 ```
-Then, open the '/devperf/index.html' file with your browser to see the results.
+Then, open the `/devperf/index.html` file with your browser to see the results.
 
-The entire results (including grunt-phantomas HTML and JSON reports) are in the '/devperf' folder. You might want to add this folder to your .gitignore file.
+The entire results (including grunt-phantomas HTML and JSON reports) are in the `/devperf` folder. You might want to add this folder to your .gitignore file.
 
 
 Results snapshot :
