@@ -45,21 +45,26 @@ module.exports = function(grunt) {
           var content = fs.readFileSync(filePath);
           var json = JSON.parse(content);
 
-          // Get all metrics for most recent data
-          if (key === 0) {
-            for (var metric in json) {
-              page[metric] = json[metric].average;
-            }
-          }
+          // Avoid problems with the old json file format of grunt-phantomas (before v0.7.0) by ignoring them
+          if (json.metrics) {
 
-          // Get history for each
-          page.timingsHistory.push({
-            'timestamp': timestamp,
-            'timeToFirstByte': json.timeToFirstByte.average,
-            'onDOMReadyTime': json.onDOMReadyTime.average,
-            'windowOnLoadTime': json.windowOnLoadTime.average,
-            'httpTrafficCompleted': json.httpTrafficCompleted.average
-          });
+            // Get all metrics for most recent data
+            if (key === 0) {
+              for (var metric in json.metrics) {
+                page[metric] = json.metrics[metric].average;
+              }
+            }
+
+            // Get history for each
+            page.timingsHistory.push({
+              'timestamp': timestamp,
+              'timeToFirstByte': json.metrics.timeToFirstByte.average,
+              'onDOMReadyTime': json.metrics.onDOMReadyTime.average,
+              'windowOnLoadTime': json.metrics.windowOnLoadTime.average,
+              'httpTrafficCompleted': json.metrics.httpTrafficCompleted.average
+            });
+
+          }
         }
       });
 
