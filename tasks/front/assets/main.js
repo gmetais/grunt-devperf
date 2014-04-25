@@ -71,7 +71,7 @@ $(document).ready(function() {
                 },
                 tooltip: {
                     formatter: function() {
-                        var date = (new Date(Math.round(this.points[0].key))).toLocaleString();
+                        var date = (new Date(this.points[0].key)).toLocaleString();
                         var s = '<b>'+ date +'</b>';
                         
                         $.each(this.points, function(i, point) {
@@ -168,4 +168,8 @@ Handlebars.registerHelper('meter', function(value, max, low, high) {
         }
     }
     return new Handlebars.SafeString("[" + gauge.join('') + "]");
+});
+
+Handlebars.registerHelper('round', function(value) {
+    return Math.round(value);
 });

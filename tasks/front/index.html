@@ -30,11 +30,11 @@
                     *<br>
                     <div class="timeCompare">
                         <div>* <br>* </div>
-                        <div class="left"><h3>Total time</h3><div>{{windowOnLoadTime}}ms</div></div>
+                        <div class="left"><h3>Total time</h3><div>{{round windowOnLoadTime}}ms</div></div>
                         <div class="meter">
                             {{meter timeFrontendInMs windowOnLoadTime 2000 6000}}
                         </div>
-                        <div class="right"><h3>Frontend time</h3><div>{{timeFrontendInMs}}ms</div></div>
+                        <div class="right"><h3>Frontend time</h3><div>{{round timeFrontendInMs}}ms</div></div>
                     </div>
                     * <br>
                     <h2>* Timings evolution:</h2>
@@ -66,11 +66,11 @@
                         <div class="row">
                             <div>*&nbsp;</div>
                             <div class="white">Size (not gziped) </div>
-                            <div>{{cssSize}}</div>
-                            <div>{{jsSize}}</div>
-                            <div>{{imageSize}}</div>
-                            <div>{{webfontSize}}</div>
-                            <div>{{contentLength}}</div>
+                            <div>{{round cssSize}}</div>
+                            <div>{{round jsSize}}</div>
+                            <div>{{round imageSize}}</div>
+                            <div>{{round webfontSize}}</div>
+                            <div>{{round contentLength}}</div>
                         </div>
                         <div class="row">
                             <div>*&nbsp;</div>
