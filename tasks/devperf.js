@@ -120,13 +120,38 @@ module.exports = function(grunt) {
       ],
       warnings: [
         {
+          variable : "requests",
+          limit : 200,
+          message: "Too many requests, i guess your site is slow, isn't it?"
+        },
+        {
+          variable : "cssCount",
+          limit : 6,
+          message: "Too many CSS files, use concatenation"
+        },
+        {
+          variable : "jsCount",
+          limit : 12,
+          message: "Too many JS files, use concatenation"
+        },
+        {
+          variable : "imageCount",
+          limit : 30,
+          message: "Too many images, use lazyloading"
+        },
+        {
+          variable : "webfontCount",
+          limit : 4,
+          message: "Too many custom fonts, tell the designer you don't want that"
+        },
+        {
           variable : "notFound",
           limit : 1,
           message: "404 errors number"
         },
         {
           variable : "smallImages",
-          limit : 10,
+          limit : 20,
           message: "Too many small images, build sprites"
         },
         {
