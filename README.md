@@ -1,6 +1,8 @@
 # grunt-devperf
 
-> Helps front-end developers to maintain a good quality, based on [phantomas](https://github.com/macbre/phantomas) and [grunt-phantomas](https://github.com/stefanjudis/grunt-phantomas).
+Helps front-end developers to maintain a good quality, based on [phantomas](https://github.com/macbre/phantomas) and [grunt-phantomas](https://github.com/stefanjudis/grunt-phantomas).
+
+Day after day, while working on your project, keep an eye on metrics that matter and get warnings for things you should optimize.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.4`
