@@ -97,8 +97,8 @@ This project is in very early stage (beta). You can help by reporting any issue,
 
 ## TODO
 - Find a way to show gziped file size
-- Add graphs for other metrics evolution over time (not just timings evolution)
 - Write tests
+- Add limits and warnings for the requests number and weight
 
 ## Author
 Gaël Métais. I'm a webperf freelance based in Paris.

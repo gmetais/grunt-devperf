@@ -23,13 +23,15 @@ module.exports = function(grunt) {
     var pages = [];
     var options = this.options({});
     options.urls.forEach(function(url) {
+      var folderName = sanitizeFolderName(url);
+
       var page = {
         url : url,
-        timingsHistory : []
+        timingsHistory : [],
+        gruntPhantomasReport : folderName + '/index.html'
       };
-
-      
-      var pageDataFolder = dataRoot + '/' + sanitizeFolderName(url) + '/data';
+    
+      var pageDataFolder = dataRoot + '/' + folderName + '/data';
       grunt.log.writeln('Looking for result files in ' + pageDataFolder);
       
       var pageJsonFiles = fs.readdirSync(pageDataFolder);
@@ -104,8 +106,6 @@ module.exports = function(grunt) {
       // Inject the config into devperfAfter task
       grunt.config.set('open.devperf_auto_task', {path: indexPath});
       grunt.task.run('open:devperf_auto_task');
-
-      console.log(grunt.config.get());
     }
   });
 
