@@ -21,6 +21,9 @@ $(document).ready(function() {
         for (var i=0, imax=data.pages.length ; i<imax ; i++) {
             var pageData = data.pages[i];
             
+            // Front end time (in ms) calculation
+            data.pages[i].timeFrontendInMs = pageData.windowOnLoadTime - pageData.timeToFirstByte;
+
             // Warnings calculations
             var pageWarnings = [];
             for (var j=0, jmax=conf.warnings.length; j<jmax ; j++) {
