@@ -70,9 +70,8 @@ $(document).ready(function() {
                     min: 0
                 },
                 tooltip: {
-                    //pointFormat: '{series.name} = {point.y:.0f}ms [{point.name}]<br>',
                     formatter: function() {
-                        var date = (new Date(this.x * 1000)).toLocaleString();
+                        var date = (new Date(Math.round(this.points[0].key))).toLocaleString();
                         var s = '<b>'+ date +'</b>';
                         
                         $.each(this.points, function(i, point) {
@@ -104,13 +103,16 @@ $(document).ready(function() {
             var odrt = [];
             var wolt = [];
             var htcd = [];
-            var dates = [];
             for (var j=0, jmax=pageData.timingsHistory.length; j<jmax ; j++) {
                 ttfb.push([pageData.timingsHistory[j].timestamp, pageData.timingsHistory[j].timeToFirstByte]);
                 odrt.push([pageData.timingsHistory[j].timestamp, pageData.timingsHistory[j].onDOMReadyTime]);
                 wolt.push([pageData.timingsHistory[j].timestamp, pageData.timingsHistory[j].windowOnLoadTime]);
                 htcd.push([pageData.timingsHistory[j].timestamp, pageData.timingsHistory[j].httpTrafficCompleted]);
             }
+            ttfb.reverse();
+            odrt.reverse();
+            wolt.reverse();
+            htcd.reverse();
             graphSettings.series = [{
                 name: 'timeToFirstByte',
                 data: ttfb
