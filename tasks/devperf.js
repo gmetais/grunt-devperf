@@ -140,6 +140,11 @@ module.exports = function(grunt) {
           message: "Too many images, use lazyloading"
         },
         {
+          variable : "imageSize",
+          limit : 512000,
+          message: "Total image size (bytes)"
+        },
+        {
           variable : "webfontCount",
           limit : 4,
           message: "Too many custom fonts, tell the designer you don't want that"
