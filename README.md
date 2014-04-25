@@ -85,7 +85,7 @@ Results snapshot :
 ![grunt-devperf example results](https://raw.github.com/gmetais/grunt-devperf/master/demo/img/results.png)
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style.
+This project is in very early stage (beta). You can help by reporting any issue, giving your feedback or coding new functionnalities.
 
 ## TODO
 - An option to open browser automaticaly when test is finished.
