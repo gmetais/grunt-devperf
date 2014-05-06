@@ -5,7 +5,7 @@ Helps front-end developers to maintain a good quality, based on [phantomas](http
 Day after day, while working on your project, keep an eye on performance metrics and get warnings for things you should optimize.
 
 
-## Install method 1: I don't care about Grunt
+## Install method 1: i don't care about Grunt
 
 **Use this minimalist installation if you just want to launch some tests and see the results.**
 
@@ -37,7 +37,7 @@ grunt
 ```
 
 
-## Install method 2: I already love Grunt
+## Install method 2: i already love Grunt
 
 This plugin requires Grunt `~0.4.4`.
 
