@@ -4,10 +4,48 @@ Helps front-end developers to maintain a good quality, based on [phantomas](http
 
 Day after day, while working on your project, keep an eye on metrics that matter and get warnings for things you should optimize.
 
-## Getting Started
-This plugin requires Grunt `~0.4.4`
 
-If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+
+
+## Install method 1: I don't care about Grunt
+
+Use this minimalist installation if you just want to launch some tests and see the results.
+
+```shell
+# Check if NodeJS is installed
+node -v
+# You need node v0.8 or higher.
+# If you don't have it, go to http://nodejs.org and grab the latest version.
+
+# Install Grunt globally
+npm install -g grunt-cli
+
+# Create a directory for your grunt-devperf installation, anywhere you want.
+# Let's call it `grunt-devperf`
+mkdir grunt-devperf
+cd grunt-devperf
+```
+
+Then copy these two files into your newly created directory :
+ - [package.json](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/package.json)
+ - [Gruntfile.js](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/Gruntfile.js)
+
+ Edit `Gruntfile.js` and insert your own list of URLs.
+
+```shell
+# Tell NPM to read `package.json` and install the required packages
+npm install
+
+# Launch your first test
+grunt
+```
+
+The browser will open the results when the test completes.
+
+
+## Install method 2: I already love Grunt
+
+This plugin requires Grunt `~0.4.4`
 
 ```shell
 npm install grunt-devperf --save-dev
@@ -90,9 +128,9 @@ Then, open the `/devperf/index.html` file with your browser to see the results.
 The entire results (including grunt-phantomas HTML and JSON reports) are in the `/devperf` folder.
 You might want to add this folder to your .gitignore file.
 
-
 Results snapshot :
 ![grunt-devperf example results](https://raw.github.com/gmetais/grunt-devperf/master/demo/img/results.png)
+
 
 ## Contributing
 This project is in very early stage (beta). You can help by reporting any issue, giving your feedback or coding new functionnalities.
