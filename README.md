@@ -9,9 +9,9 @@ Day after day, while working on your project, keep an eye on metrics that matter
 
 ## Install method 1: I don't care about Grunt
 
-Use this minimalist installation if you just want to launch some tests and see the results.
+**Use this minimalist installation if you just want to launch some tests and see the results.**
 
-You need node v0.8 or higher. Check your version:
+You need NodeJS v0.8 or higher. Check your version:
 ```shell
 node -v
 ```
@@ -28,9 +28,7 @@ mkdir grunt-devperf
 cd grunt-devperf
 ```
 
-Then copy these two files into your newly created directory :
- - [package.json](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/package.json)
- - [Gruntfile.js](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/Gruntfile.js)
+Then copy these two files into your `grunt-devperf` directory : [package.json](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/package.json) and [Gruntfile.js](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/Gruntfile.js)
 
 Edit `Gruntfile.js` and insert your own list of URLs.
 
