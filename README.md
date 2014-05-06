@@ -22,17 +22,13 @@ Install Grunt globally:
 npm install -g grunt-cli
 ```
 
-Create a directory for your grunt-devperf installation, anywhere you want. Let's call it `grunt-devperf`:
-```shell
-mkdir grunt-devperf
-cd grunt-devperf
-```
+Create a directory for your grunt-devperf installation, anywhere you want. Let's call it `grunt-devperf`.
 
-Then copy these two files into your `grunt-devperf directory : [package.json](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/package.json) and [Gruntfile.js](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/Gruntfile.js)
+Copy the following two files into your `grunt-devperf` directory : [package.json](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/package.json) and [Gruntfile.js](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/Gruntfile.js)
 
 Edit `Gruntfile.js` and insert your own list of URLs.
 
-Tell NPM to read `package.json` and install the required packages:
+Install grunt-devperf by launching this command from your `grunt-devperf` directory:
 ```shell
 npm install
 ```
