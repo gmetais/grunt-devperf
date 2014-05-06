@@ -71,7 +71,7 @@ $(document).ready(function() {
                 },
                 tooltip: {
                     formatter: function() {
-                        var date = (new Date(this.points[0].key)).toLocaleString();
+                        var date = (new Date(parseInt(this.points[0].key, 10))).toLocaleString();
                         var s = '<b>'+ date +'</b>';
                         
                         $.each(this.points, function(i, point) {
