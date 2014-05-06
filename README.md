@@ -11,17 +11,19 @@ Day after day, while working on your project, keep an eye on metrics that matter
 
 Use this minimalist installation if you just want to launch some tests and see the results.
 
+You need node v0.8 or higher. Check your version:
 ```shell
-# Check if NodeJS is installed
 node -v
-# You need node v0.8 or higher.
-# If you don't have it, go to http://nodejs.org and grab the latest version.
+```
+If you don't have it, go to http://nodejs.org and grab the latest version.
 
-# Install Grunt globally
+Install Grunt globally:
+```shell
 npm install -g grunt-cli
+```
 
-# Create a directory for your grunt-devperf installation, anywhere you want.
-# Let's call it `grunt-devperf`
+Create a directory for your grunt-devperf installation, anywhere you want. Let's call it `grunt-devperf`:
+```shell
 mkdir grunt-devperf
 cd grunt-devperf
 ```
@@ -30,22 +32,24 @@ Then copy these two files into your newly created directory :
  - [package.json](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/package.json)
  - [Gruntfile.js](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/Gruntfile.js)
 
- Edit `Gruntfile.js` and insert your own list of URLs.
+Edit `Gruntfile.js` and insert your own list of URLs.
 
+Tell NPM to read `package.json` and install the required packages:
 ```shell
-# Tell NPM to read `package.json` and install the required packages
 npm install
+```
 
-# Launch your first test
+Launch your first test:
+```shell
 grunt
 ```
 
-The browser will open the results when the test completes.
+You will see Grunt working. When it's done, your favorite browser will open the results page.
 
 
 ## Install method 2: I already love Grunt
 
-This plugin requires Grunt `~0.4.4`
+This plugin requires Grunt `~0.4.4`.
 
 ```shell
 npm install grunt-devperf --save-dev
