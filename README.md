@@ -28,7 +28,7 @@ mkdir grunt-devperf
 cd grunt-devperf
 ```
 
-Then copy these two files into your `grunt-devperf` directory : [package.json](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/package.json) and [Gruntfile.js](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/Gruntfile.js)
+Then copy these two files into your `grunt-devperf directory : [package.json](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/package.json) and [Gruntfile.js](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/Gruntfile.js)
 
 Edit `Gruntfile.js` and insert your own list of URLs.
 
@@ -37,12 +37,10 @@ Tell NPM to read `package.json` and install the required packages:
 npm install
 ```
 
-Launch your first test:
+It's done, you can launch your first test!
 ```shell
 grunt
 ```
-
-You will see Grunt working. When it's done, your favorite browser will open the results page.
 
 
 ## Install method 2: I already love Grunt
