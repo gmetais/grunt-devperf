@@ -40,7 +40,7 @@ grunt.initConfig({
 
 #### options.urls
 Type: `Array of Strings`
-Default value: `'http://www.google.fr'`
+Default value: `['http://www.google.fr']`
 
 The list of URLs you want to test
 
