@@ -127,9 +127,9 @@ Results snapshot:
 ![grunt-devperf example results](https://raw.github.com/gmetais/grunt-devperf/master/demo/img/results.png)
 
 About the results:
-- Yes it looks like a console but it's a web page.
+- Yes it looks like a console but it's a web page!
 - Some metrics might have decimals, because they are averages of multiple runs.
-- The link to the grunt-phantomas results page gives you tons of details, very helpful for debugging.
+- The link to the grunt-phantomas report will give you tons of details, very helpful for debugging.
 
 
 ## Contributing
