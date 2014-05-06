@@ -2,9 +2,7 @@
 
 Helps front-end developers to maintain a good quality, based on [phantomas](https://github.com/macbre/phantomas) and [grunt-phantomas](https://github.com/stefanjudis/grunt-phantomas).
 
-Day after day, while working on your project, keep an eye on metrics that matter and get warnings for things you should optimize.
-
-
+Day after day, while working on your project, keep an eye on performance metrics and get warnings for things you should optimize.
 
 
 ## Install method 1: I don't care about Grunt
@@ -24,16 +22,16 @@ npm install -g grunt-cli
 
 Create a directory for your grunt-devperf installation, anywhere you want. Let's call it `grunt-devperf`.
 
-Copy the following two files into your `grunt-devperf` directory : [package.json](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/package.json) and [Gruntfile.js](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/Gruntfile.js)
-
-Edit `Gruntfile.js` and insert your own list of URLs.
+Copy the following two files into your directory : [package.json](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/package.json) and [Gruntfile.js](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/Gruntfile.js)
 
 Install grunt-devperf by launching this command from your `grunt-devperf` directory:
 ```shell
 npm install
 ```
 
-It's done, you can launch your first test!
+Edit `Gruntfile.js` and insert your own list of URLs.
+
+**It's done!** You can launch your first test with this command:
 ```shell
 grunt
 ```
@@ -43,6 +41,7 @@ grunt
 
 This plugin requires Grunt `~0.4.4`.
 
+Install the plugin:
 ```shell
 npm install grunt-devperf --save-dev
 ```
@@ -53,7 +52,7 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-devperf');
 ```
 
-## The "devperf" task
+## Setup the "devperf" task
 
 ### Overview
 In your project's Gruntfile, add a section named `devperf` to the data object passed into `grunt.initConfig()`.
@@ -124,8 +123,13 @@ Then, open the `/devperf/index.html` file with your browser to see the results.
 The entire results (including grunt-phantomas HTML and JSON reports) are in the `/devperf` folder.
 You might want to add this folder to your .gitignore file.
 
-Results snapshot :
+Results snapshot:
 ![grunt-devperf example results](https://raw.github.com/gmetais/grunt-devperf/master/demo/img/results.png)
+
+About the results:
+- Yes it looks like a console but it's a web page.
+- Some metrics might have decimals, because they are averages of multiple runs.
+- The link to the grunt-phantomas results page gives you tons of details, very helpful for debugging.
 
 
 ## Contributing
