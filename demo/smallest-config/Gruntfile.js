@@ -5,7 +5,8 @@ module.exports = function(grunt) {
       options: {
         urls: [
           // Insert the URLs you want to test in this list
-          'http://www.my-website.com/my-page'
+          'http://www.my-website.com/my-page-1',
+          'http://www.my-website.com/my-page-2'
         ]
       },
       openResults: true,
