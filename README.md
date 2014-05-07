@@ -96,6 +96,7 @@ Default value: `false`
 Automatically opens the browser on the results page when the devperf task is finished.
 
 
+
 ### Usage Examples
 
 In this example, several Urls are tested
@@ -132,13 +133,95 @@ About the results:
 - The link to the grunt-phantomas report will give you tons of details, very helpful for debugging.
 
 
+
+### Warnings list
+
+#### Default list of warnings
+
+When a metric is greater than the limit, the message is displayed.
+
+Metric                    | Limit   | Message
+--------------------------|---------|--------------------------------------------------------------------
+requests                  | 200     | Too many requests, i guess your site is slow, isn't it?
+cssCount                  | 6       | Too many CSS files, use concatenation
+jsCount                   | 12      | Too many JS files, use concatenation
+imageCount                | 30      | Too many images, use lazyloading
+smallImages               | 20      | Too many small images, build sprites
+imageSize                 | 512000  | Total image size (bytes) is too high, try image optimisation
+webfontCount              | 4       | Too many custom fonts, tell the designer you don't want that
+notFound                  | 0       | Number of 404 errors
+imagesWithoutDimensions   | 5       | Number of images without dimensions
+commentsSize              | 1000    | Reduce size of comments in HTML
+whiteSpacesSize           | 5000    | Reduce the number of whitespaces in HTML
+DOMelementsCount          | 2000    | Reduce the number of DOM elements
+documentWriteCalls        | 0       | Remove all document.write() calls
+jsErrors                  | 0       | Number of Javascript errors
+consoleMessages           | 0       | Remove console.log or console.*whatever*
+DOMqueries                | 200     | Reduce number of DOM queries
+DOMqueriesDuplicated      | 30      | Many duplicated DOM queries, try to save results into variables
+DOMinserts                | 100     | Reduce number of DOM insertions
+jQuerySizzleCalls         | 300     | Reduce number of Sizzle calls (= jQuery DOM queries)
+headersSentSize           | 20000   | Reduce size of headers sent (cookies?)
+
+
+#### Modifying the warnings
+
+In the Gruntfile, you can change any of these by writing the `warnings` option.
+
+```js
+grunt.initConfig({
+  devperf: {
+    options: {
+      urls: [
+        'http://www.google.com'
+      ],
+      warnings: [
+        {
+          // Changing the limit for this variable
+          variable : "jsErrors",
+          limit : 42,
+        },
+        {
+          // Changing the message
+          variable : "jQuerySizzleCalls",
+          message : "I like this message best"
+        },
+        {
+          // Changing the limit and the message
+          variable : "DOMelementsCount",
+          limit : 200,
+          message: "DOM elements number is my big issue so i reduced the limit"
+        },
+        {
+          // Disabling a warning (-1 is infinite)
+          variable : "consoleMessages",
+          limit : -1
+        },
+        {
+          // Adding a new warning for one of the numerous Phantomas variables not handled by grunt-devperf
+          variable : "jsonCount",
+          limit : 5,
+          message : "I really care about having a small number of JSON requests"
+        }
+      ]
+    }
+  }
+});
+```
+
+You can find the list of all Phantomas variables and their descriptions [here](https://github.com/macbre/phantomas#metrics).
+If you think one of these variables deserves a warning, don't hesitate to open an issue!
+
+
+
+
+
 ## Contributing
-This project is in very early stage (beta). You can help by reporting any issue, giving your feedback or coding new functionnalities.
+This project is in early stage (beta). You can help by reporting any issue, giving your feedback or coding new functionnalities.
 
 ## TODO
 - Find a way to show gziped file size
 - Write tests
-- Help people customize warnings (add, remove, change text or limit)
 
 ## Author
 Gaël Métais. I'm a webperf freelance based in Paris.

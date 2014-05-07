@@ -117,111 +117,135 @@ module.exports = function(grunt) {
       urls: [
         'http://www.google.fr'
       ],
-      warnings: [
-        {
-          variable : "requests",
-          limit : 200,
-          message: "Too many requests, i guess your site is slow, isn't it?"
-        },
-        {
-          variable : "cssCount",
-          limit : 6,
-          message: "Too many CSS files, use concatenation"
-        },
-        {
-          variable : "jsCount",
-          limit : 12,
-          message: "Too many JS files, use concatenation"
-        },
-        {
-          variable : "imageCount",
-          limit : 30,
-          message: "Too many images, use lazyloading"
-        },
-        {
-          variable : "imageSize",
-          limit : 512000,
-          message: "Total image size (bytes)"
-        },
-        {
-          variable : "webfontCount",
-          limit : 4,
-          message: "Too many custom fonts, tell the designer you don't want that"
-        },
-        {
-          variable : "notFound",
-          limit : 1,
-          message: "404 errors number"
-        },
-        {
-          variable : "smallImages",
-          limit : 20,
-          message: "Too many small images, build sprites"
-        },
-        {
-          variable : "imagesWithoutDimensions",
-          limit : 5,
-          message: "Number of images without dimensions"
-        },
-        {
-          variable : "commentsSize",
-          limit : 1000,
-          message: "Reduce size of comments in HTML"
-        },
-        {
-          variable : "whiteSpacesSize",
-          limit : 5000,
-          message: "Reduce the number of whitespaces in HTML"
-        },
-        {
-          variable : "DOMelementsCount",
-          limit : 2000,
-          message: "Reduce DOM elements number"
-        },
-        {
-          variable : "documentWriteCalls",
-          limit : 0,
-          message: "Remove all document.write() calls"
-        },
-        {
-          variable : "jsErrors",
-          limit : 0,
-          message: "Javascript errors"
-        },
-        {
-          variable : "consoleMessages",
-          limit : 0,
-          message: "Remove console.log or console.*whatever*"
-        },
-        {
-          variable : "DOMqueries",
-          limit : 200,
-          message: "Reduce number of DOM queries"
-        },
-        {
-          variable : "DOMqueriesDuplicated",
-          limit : 30,
-          message: "Too many duplicated DOM queries"
-        },
-        {
-          variable : "DOMinserts",
-          limit : 200,
-          message: "Too many DOM insertions"
-        },
-        {
-          variable : "headersSentSize",
-          limit : 20000,
-          message: "Reduce size of headers sent (cookies?)"
-        },
-        {
-          variable : "jQuerySizzleCalls",
-          limit : 300,
-          message: "Reduce number of Sizzle calls (= jQuery DOM queries)"
-        }
-      ],
+      warnings: [],
       numberOfRuns: 5,
       timeout: 120,
       openResults: false
+    });
+
+    var defaultWarnings = [
+      {
+        variable : "requests",
+        limit : 200,
+        message: "Too many requests, i guess your site is slow, isn't it?"
+      },
+      {
+        variable : "cssCount",
+        limit : 6,
+        message: "Too many CSS files, use concatenation"
+      },
+      {
+        variable : "jsCount",
+        limit : 12,
+        message: "Too many JS files, use concatenation"
+      },
+      {
+        variable : "imageCount",
+        limit : 30,
+        message: "Too many images, use lazyloading"
+      },
+      {
+        variable : "smallImages",
+        limit : 20,
+        message: "Too many small images, build sprites"
+      },
+      {
+        variable : "imageSize",
+        limit : 512000,
+        message: "Total image size (bytes) is too high, try image optimisation"
+      },
+      {
+        variable : "webfontCount",
+        limit : 4,
+        message: "Too many custom fonts, tell the designer you don't want that"
+      },
+      {
+        variable : "notFound",
+        limit : 0,
+        message: "Number of 404 errors"
+      },
+      {
+        variable : "imagesWithoutDimensions",
+        limit : 5,
+        message: "Number of images without dimensions"
+      },
+      {
+        variable : "commentsSize",
+        limit : 1000,
+        message: "Reduce size of comments in HTML"
+      },
+      {
+        variable : "whiteSpacesSize",
+        limit : 5000,
+        message: "Reduce the number of whitespaces in HTML"
+      },
+      {
+        variable : "DOMelementsCount",
+        limit : 2000,
+        message: "Reduce the number of DOM elements"
+      },
+      {
+        variable : "documentWriteCalls",
+        limit : 0,
+        message: "Remove all document.write() calls"
+      },
+      {
+        variable : "jsErrors",
+        limit : 0,
+        message: "Number of Javascript errors"
+      },
+      {
+        variable : "consoleMessages",
+        limit : 0,
+        message: "Remove console.log or console.*whatever*"
+      },
+      {
+        variable : "DOMqueries",
+        limit : 200,
+        message: "Reduce number of DOM queries"
+      },
+      {
+        variable : "DOMqueriesDuplicated",
+        limit : 30,
+        message: "Many duplicated DOM queries, try to save results into variables"
+      },
+      {
+        variable : "DOMinserts",
+        limit : 100,
+        message: "Reduce number of DOM insertions"
+      },
+      {
+        variable : "jQuerySizzleCalls",
+        limit : 300,
+        message: "Reduce number of Sizzle calls (= jQuery DOM queries)"
+      },
+      {
+        variable : "headersSentSize",
+        limit : 20000,
+        message: "Reduce size of headers sent (cookies?)"
+      }
+    ];
+
+    // Merge user defined warnings with defaults
+    defaultWarnings.forEach(function(defaultWarn) {
+      var found = false;
+      options.warnings.forEach(function(userWarn) {
+        if (userWarn.variable === defaultWarn.variable) {
+          found = true;
+          if (userWarn.message === undefined) {
+            userWarn.message = defaultWarn.message;
+          } else if (userWarn.limit === undefined) {
+            userWarn.limit = defaultWarn.limit
+          } else if (userWarn.message === undefined && userWarn.limit === undefined) {
+            grunt.log.error('Warning ' +  + ' is misconfigured, it has been ignored.');
+            userWarn.limit = -1;
+            userWarn.message = "Ignored";
+          }
+        }
+      });
+      if (!found) {
+        options.warnings.push(defaultWarn);
+      }
     });
 
     // Inject the phantomas config into grunt config

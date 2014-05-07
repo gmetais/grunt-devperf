@@ -28,7 +28,7 @@ $(document).ready(function() {
             var pageWarnings = [];
             for (var j=0, jmax=conf.warnings.length; j<jmax ; j++) {
                 var warning = conf.warnings[j];
-                if (warning.variable in pageData && pageData[warning.variable] > warning.limit) {
+                if (warning.variable in pageData && warning.limit > -1 && pageData[warning.variable] > warning.limit) {
                     pageWarnings.push({
                         message: warning.message,
                         value: pageData[warning.variable]
