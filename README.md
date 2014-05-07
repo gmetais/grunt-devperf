@@ -139,7 +139,6 @@ This project is in very early stage (beta). You can help by reporting any issue,
 - Find a way to show gziped file size
 - Write tests
 - Help people customize warnings (add, remove, change text or limit)
-- In the Gruntfile, URLs should be outside of `options`, they are the main parameter.
 
 ## Author
 Gaël Métais. I'm a webperf freelance based in Paris.
