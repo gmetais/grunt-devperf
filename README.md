@@ -141,7 +141,7 @@ About the results:
 When a metric is greater than the limit, the message is displayed.
 
 Metric                    | Limit   | Message
---------------------------|---------|--------------------------------------------------------------------
+--------------------------|:-------:|--------------------------------------------------------------------
 requests                  | 200     | Too many requests, i guess your site is slow, isn't it?
 cssCount                  | 6       | Too many CSS files, use concatenation
 jsCount                   | 12      | Too many JS files, use concatenation
@@ -166,7 +166,7 @@ headersSentSize           | 20000   | Reduce size of headers sent (cookies?)
 
 #### Modifying the warnings
 
-In the Gruntfile, you can change any of these by writing the `warnings` option.
+In the Gruntfile, you can change any of them by adding a `warnings` option this way:
 
 ```js
 grunt.initConfig({
@@ -198,7 +198,7 @@ grunt.initConfig({
           limit : -1
         },
         {
-          // Adding a new warning for one of the numerous Phantomas variables not handled by grunt-devperf
+          // Adding one of the numerous Phantomas variables not handled by grunt-devperf
           variable : "jsonCount",
           limit : 5,
           message : "I really care about having a small number of JSON requests"
@@ -209,10 +209,8 @@ grunt.initConfig({
 });
 ```
 
-You can find the list of all Phantomas variables and their descriptions [here](https://github.com/macbre/phantomas#metrics).
-If you think one of these variables deserves a warning, don't hesitate to open an issue!
-
-
+You can find the complete list of Phantomas variables and their descriptions [here](https://github.com/macbre/phantomas#metrics).
+If you think one of these variables deserves a warning in grunt-devperf, don't hesitate to open an issue!
 
 
 
