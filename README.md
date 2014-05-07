@@ -9,27 +9,27 @@ Day after day, while working on your project, keep an eye on performance metrics
 
 **Use this minimalist installation if you just want to launch some tests and see the results.**
 
-You need NodeJS v0.8 or higher. Check your version:
+1) You need NodeJS v0.8 or higher. Check your version:
 ```shell
 node -v
 ```
 If you don't have it, go to http://nodejs.org and grab the latest version.
 
-Install Grunt globally:
+2) Install Grunt globally:
 ```shell
 npm install -g grunt-cli
 ```
 
-Create a directory for your grunt-devperf installation, anywhere you want. Let's call it `grunt-devperf`.
+3) Create a directory for your grunt-devperf installation, anywhere you want. Let's call it `grunt-devperf`.
 
-Copy the following two files into your directory : [package.json](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/package.json) and [Gruntfile.js](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/Gruntfile.js)
+4) Copy the following two files into your directory : [package.json](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/package.json) and [Gruntfile.js](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/Gruntfile.js)
 
-Install grunt-devperf by launching this command from your `grunt-devperf` directory:
+5) Install grunt-devperf by launching this command from your `grunt-devperf` directory:
 ```shell
 npm install
 ```
 
-Edit `Gruntfile.js` and insert your own list of URLs.
+6) Edit `Gruntfile.js` and insert your own list of URLs.
 
 **It's done!** You can launch your first test with this command:
 ```shell
@@ -139,6 +139,7 @@ This project is in very early stage (beta). You can help by reporting any issue,
 - Find a way to show gziped file size
 - Write tests
 - Help people customize warnings (add, remove, change text or limit)
+- In the Gruntfile, URLs should be outside of `options`, they are the main parameter.
 
 ## Author
 Gaël Métais. I'm a webperf freelance based in Paris.
