@@ -43,7 +43,6 @@ module.exports = function(grunt) {
           var timestamp = jsonFileName.substring(0, 13);
 
           var filePath = pageDataFolder + '/' + jsonFileName;
-          grunt.log.writeln('Openning ' + filePath + ' ...');
           var content = fs.readFileSync(filePath);
           var json = JSON.parse(content);
 
