@@ -14,7 +14,8 @@ module.exports = function(grunt) {
     jshint: {
       all: [
         'Gruntfile.js',
-        'tasks/*.js'
+        'tasks/devperf.js',
+        'tasks/front/assets/main.js'
       ]
     },
 

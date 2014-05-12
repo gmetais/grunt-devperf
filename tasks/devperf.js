@@ -6,6 +6,7 @@
  * Licensed under the MIT license.
  */
 
+/*jslint node: true */
 'use strict';
 
 var fs = require('fs');
@@ -235,9 +236,9 @@ module.exports = function(grunt) {
           if (userWarn.message === undefined) {
             userWarn.message = defaultWarn.message;
           } else if (userWarn.limit === undefined) {
-            userWarn.limit = defaultWarn.limit
+            userWarn.limit = defaultWarn.limit;
           } else if (userWarn.message === undefined && userWarn.limit === undefined) {
-            grunt.log.error('Warning ' +  + ' is misconfigured, it has been ignored.');
+            grunt.log.error('Warning ' + userWarn.variable + ' is misconfigured, it has been ignored.');
             userWarn.limit = -1;
             userWarn.message = "Ignored";
           }

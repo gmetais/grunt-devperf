@@ -16,9 +16,9 @@ $(document).ready(function() {
 
     function loadData(conf, data) {
 
-        var graphs = [];
+        var graphs = [], i, imax, j, jmax;
 
-        for (var i=0, imax=data.pages.length ; i<imax ; i++) {
+        for (i=0, imax=data.pages.length ; i<imax ; i++) {
             var pageData = data.pages[i];
             
             // Front end time (in ms) calculation
@@ -26,7 +26,7 @@ $(document).ready(function() {
 
             // Warnings calculations
             var pageWarnings = [];
-            for (var j=0, jmax=conf.warnings.length; j<jmax ; j++) {
+            for (j=0, jmax=conf.warnings.length; j<jmax ; j++) {
                 var warning = conf.warnings[j];
                 if (warning.variable in pageData && warning.limit > -1 && pageData[warning.variable] > warning.limit) {
                     pageWarnings.push({
@@ -38,72 +38,13 @@ $(document).ready(function() {
             data.pages[i].warnings = pageWarnings;
 
             // Graphs data fetching
-            var graphSettings = {
-                colors: ['cyan', 'white', 'yellow', 'magenta'],
-                chart: {
-                    type: 'line',
-                    backgroundColor: 'transparent',
-                    animation: false
-                },
-                title: {text: ''},
-                legend: {enabled: false},
-                credits: {enabled: false},
-                xAxis: {
-                    labels: {enabled: false},
-                    lineColor: 'lime',
-                    type: 'datetime'
-                },
-                yAxis: {
-                    title: {text: ''},
-                    type: 'datetime',
-                    labels: {
-                        formatter: function() {
-                            return this.value / 1000 +'s';
-                        },
-                        style: {
-                            color: 'lime'
-                        }
-                    },
-                    lineColor: 'lime',
-                    gridLineColor: 'rgba(0, 255, 0, 0.3)',
-                    tickPixelInterval : 25,
-                    min: 0
-                },
-                tooltip: {
-                    formatter: function() {
-                        var date = (new Date(parseInt(this.points[0].key, 10))).toLocaleString();
-                        var s = '<b>'+ date +'</b>';
-                        
-                        $.each(this.points, function(i, point) {
-                            s += '<br/>' + point.series.name + ': ' + point.y + 'ms';
-                        });
-                        
-                        return s;
-                    },
-                    shared: true
-                },
-                plotOptions: {
-                    line: {
-                        marker: {
-                            enabled: false,
-                            symbol: 'diamond',
-                            radius: 2,
-                            states: {
-                                hover: {enabled: true}
-                            }
-                        }
-                    },
-                    series: {
-                        animation: false
-                    }
-                }
-            };
+            var graphSettings = getGraphSettings();
 
             var ttfb = [];
             var odrt = [];
             var wolt = [];
             var htcd = [];
-            for (var j=0, jmax=pageData.timingsHistory.length; j<jmax ; j++) {
+            for (j=0, jmax=pageData.timingsHistory.length; j<jmax ; j++) {
                 ttfb.push([pageData.timingsHistory[j].timestamp, pageData.timingsHistory[j].timeToFirstByte]);
                 odrt.push([pageData.timingsHistory[j].timestamp, pageData.timingsHistory[j].onDOMReadyTime]);
                 wolt.push([pageData.timingsHistory[j].timestamp, pageData.timingsHistory[j].windowOnLoadTime]);
@@ -136,13 +77,72 @@ $(document).ready(function() {
         $("#interlace").height($(document).height());
 
         // Load graphs
-        for (var i=0, max=graphs.length ; i<max ; i++) {
+        for (i=0, imax=graphs.length ; i<imax ; i++) {
             $("#graph" + i).highcharts(graphs[i]);
         }
     }
 
-    function showError(message) {
-        $("#pageContainer").append('<div class="red">' + message + '</div>');
+    function getGraphSettings() {
+        return $.extend(true, {}, {
+            colors: ['cyan', 'white', 'yellow', 'magenta'],
+            chart: {
+                type: 'line',
+                backgroundColor: 'transparent',
+                animation: false
+            },
+            title: {text: ''},
+            legend: {enabled: false},
+            credits: {enabled: false},
+            xAxis: {
+                labels: {enabled: false},
+                lineColor: 'lime',
+                type: 'datetime'
+            },
+            yAxis: {
+                title: {text: ''},
+                type: 'datetime',
+                labels: {
+                    formatter: function() {
+                        return this.value / 1000 +'s';
+                    },
+                    style: {
+                        color: 'lime'
+                    }
+                },
+                lineColor: 'lime',
+                gridLineColor: 'rgba(0, 255, 0, 0.3)',
+                tickPixelInterval : 25,
+                min: 0
+            },
+            tooltip: {
+                formatter: function() {
+                    var date = (new Date(parseInt(this.points[0].key, 10))).toLocaleString();
+                    var s = '<b>'+ date +'</b>';
+                    
+                    $.each(this.points, function(i, point) {
+                        s += '<br/>' + point.series.name + ': ' + point.y + 'ms';
+                    });
+                    
+                    return s;
+                },
+                shared: true
+            },
+            plotOptions: {
+                line: {
+                    marker: {
+                        enabled: false,
+                        symbol: 'diamond',
+                        radius: 2,
+                        states: {
+                            hover: {enabled: true}
+                        }
+                    }
+                },
+                series: {
+                    animation: false
+                }
+            }
+        });
     }
 
     $(document).ready(init);
