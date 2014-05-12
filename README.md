@@ -4,6 +4,8 @@ Helps front-end developers to maintain a good quality, based on [phantomas](http
 
 Day after day, while working on your project, keep an eye on performance metrics and get warnings for things you should optimize.
 
+[![Dependency Status](https://gemnasium.com/gmetais/grunt-devperf.svg)](https://gemnasium.com/gmetais/grunt-devperf)
+
 
 ## Install method 1: i don't care about Grunt
 
