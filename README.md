@@ -77,13 +77,14 @@ grunt.initConfig({
 Type: `Array of Strings`
 Default value: `['http://www.google.fr']`
 
-The list of URLs you want to test
+The list of URLs you want to test.
 
 #### options.numberOfRuns
 Type: `Integer`
 Default value: `5`
 
-The number of times you want phantomas to call each page
+The number of times you want phantomas to call each page.
+A higher number of runs could give a better accuracy, but note that they are run in parallel and that your machine's bandwith may suffer.
 
 #### options.timeout
 Type: `Integer`
