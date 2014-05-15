@@ -1,7 +1,7 @@
 {
   "name": "grunt-devperf",
   "description": "Helps front-end developers to maintain a good quality and good perfs, based on phantomas and grunt-phantomas.",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "homepage": "https://github.com/gmetais/grunt-devperf",
   "author": {
     "name": "Gaël Métais",
@@ -30,13 +30,14 @@
   "devDependencies": {
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-nodeunit": "^0.3.3",
+    "grunt-contrib-clean": "^0.5.0",
     "grunt": "^0.4.4"
   },
   "peerDependencies": {
     "grunt": "^0.4.4"
   },
   "dependencies": {
-    "grunt-phantomas": "0.7.0",
+    "grunt-phantomas": "0.7.1",
     "grunt-open": "^0.2.3"
   },
   "keywords": [
