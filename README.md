@@ -9,7 +9,7 @@ Day after day, while working on your project, keep an eye on performance metrics
 
 ## Install method 1: i don't care about Grunt
 
-**Use this minimalist installation if you just want to launch some tests and see the results.**
+**Use this minimalist installation if you just want to launch some quick tests.**
 
 1) You need NodeJS v0.8 or higher. Check your version:
 ```shell
@@ -53,6 +53,9 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 ```js
 grunt.loadNpmTasks('grunt-devperf');
 ```
+
+I recommand using it as part of your Continuous Integration system, but you can also simply use it locally.
+
 
 ## Setup the "devperf" task
 
