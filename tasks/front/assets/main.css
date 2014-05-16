@@ -5,8 +5,13 @@ html {
 body {
     /* Background and console styles from Eric Bidelman (ericbidelman@chromium.org) */
     /* http://www.htmlfivewow.com/demos/terminal/terminal.html */
-    background: -webkit-radial-gradient(center center, contain, rgba(0,150,0,.5), black) center center no-repeat, black; /*center center for the gradient scrolls with the page :(*/
-    -webkit-background-size: 110% 100%;
+    background: black;
+    background: radial-gradient(center center, contain, rgba(0,150,0,.5), black) center center no-repeat, black; /*center center for the gradient scrolls with the page :(*/
+    background: -webkit-radial-gradient(center center, contain, rgba(0,150,0,.5), black) center center no-repeat, black;
+    background: -moz-radial-gradient(center center, contain, rgba(0,150,0,.5), black) center center no-repeat, black;
+    background: -ms-radial-gradient(center center, contain, rgba(0,150,0,.5), black) center center no-repeat, black;
+    background: -o-radial-gradient(center center, contain, rgba(0,150,0,.5), black) center center no-repeat, black;
+    background-size: 110% 100%;
     background-attachment: fixed;
 
     color: #0F0;
