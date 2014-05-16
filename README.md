@@ -54,7 +54,7 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-devperf');
 ```
 
-I recommand using it as part of your Continuous Integration system, but you can also simply use it locally.
+I recommand using it as a part of your Continuous Integration system, but you can also simply use it locally while developping.
 
 
 ## Setup the "devperf" task
