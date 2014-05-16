@@ -11,7 +11,8 @@ module.exports = function(grunt) {
       },
       openResults: true,
       timeout: 300,
-      numberOfRuns: 7
+      numberOfRuns: 5,
+      resultsFolder: './'
     }
   });
 

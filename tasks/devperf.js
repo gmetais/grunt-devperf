@@ -11,8 +11,6 @@
 
 var fs = require('fs');
 var path = require('path');
-var dataRoot = 'devperf';
-var outputFile = dataRoot + '/results.json';
 
 module.exports = function(grunt) {
   require('grunt-phantomas/tasks/phantomas')(grunt);
@@ -32,7 +30,7 @@ module.exports = function(grunt) {
         gruntPhantomasReport : folderName + '/index.html'
       };
     
-      var pageDataFolder = dataRoot + '/' + folderName + '/data';
+      var pageDataFolder = options.resultsFolder + '/' + folderName + '/data';
       grunt.log.writeln('Looking for result files in ' + pageDataFolder);
       
       var pageJsonFiles = fs.readdirSync(pageDataFolder);
@@ -74,29 +72,29 @@ module.exports = function(grunt) {
     });
 
     // Write result file
-    fs.writeFileSync(outputFile, JSON.stringify({pages: pages}, null, 4));
-    grunt.log.writeln('File "' + outputFile + '" created.');
+    fs.writeFileSync(options.resultsFolder + '/results.json', JSON.stringify({pages: pages}, null, 4));
+    grunt.log.writeln('File "' + options.resultsFolder + '/results.json' + '" created.');
 
     // Write settings file for the front
-    var settingsFilePath = dataRoot + '/settings.json';
+    var settingsFilePath = options.resultsFolder + '/settings.json';
     fs.writeFileSync(settingsFilePath, JSON.stringify(options, null, 4));
     grunt.log.writeln('File "' + settingsFilePath + '" created.');
 
     // Copy assets
     var frontFilesPath = __dirname + '/front';
-    grunt.file.copy(frontFilesPath + '/assets/main.js', dataRoot + '/assets/main.js');
-    grunt.file.copy(frontFilesPath + '/assets/main.css', dataRoot + '/assets/main.css');
-    grunt.file.copy(frontFilesPath + '/assets/interlace.png', dataRoot + '/assets/interlace.png');
-    grunt.file.copy(frontFilesPath + '/assets/handlebars-v1.3.0.js', dataRoot + '/assets/handlebars-v1.3.0.js');
-    grunt.file.copy(frontFilesPath + '/assets/jquery-2.1.0.min.js', dataRoot + '/assets/jquery-2.1.0.min.js');
-    grunt.file.copy(frontFilesPath + '/assets/highcharts.js', dataRoot + '/assets/highcharts.js');
+    grunt.file.copy(frontFilesPath + '/assets/main.js', options.resultsFolder + '/assets/main.js');
+    grunt.file.copy(frontFilesPath + '/assets/main.css', options.resultsFolder + '/assets/main.css');
+    grunt.file.copy(frontFilesPath + '/assets/interlace.png', options.resultsFolder + '/assets/interlace.png');
+    grunt.file.copy(frontFilesPath + '/assets/handlebars-v1.3.0.js', options.resultsFolder + '/assets/handlebars-v1.3.0.js');
+    grunt.file.copy(frontFilesPath + '/assets/jquery-2.1.0.min.js', options.resultsFolder + '/assets/jquery-2.1.0.min.js');
+    grunt.file.copy(frontFilesPath + '/assets/highcharts.js', options.resultsFolder + '/assets/highcharts.js');
     grunt.log.writeln('Assets copied.');
 
     // Write index.html
     var indexHtml = grunt.file.read(frontFilesPath + '/index.html');
     indexHtml = indexHtml.replace('/*%%RESULTS%%*/', 'var results = ' + JSON.stringify({pages: pages}, null, 4));
     indexHtml = indexHtml.replace('/*%%SETTINGS%%*/', 'var settings = ' + JSON.stringify(options, null, 4));
-    var indexPath = dataRoot + '/index.html';
+    var indexPath = options.resultsFolder + '/index.html';
     grunt.file.write(indexPath, indexHtml);
 
     // Open the index.html file in browser (option)
@@ -121,7 +119,8 @@ module.exports = function(grunt) {
       warnings: [],
       numberOfRuns: 5,
       timeout: 120,
-      openResults: false
+      openResults: false,
+      resultsFolder: './devperf'
     });
 
     var defaultWarnings = [
@@ -254,7 +253,7 @@ module.exports = function(grunt) {
     options.urls.forEach(function(url) {
       phantomasConfig[sanitizeFolderName(url)] = {
         options: {
-          indexPath: './' + dataRoot + '/' + sanitizeFolderName(url) + '/',
+          indexPath: options.resultsFolder + '/' + sanitizeFolderName(url) + '/',
           url: url,
           numberOfRuns: options.numberOfRuns,
           options: {

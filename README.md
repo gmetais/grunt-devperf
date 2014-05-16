@@ -93,7 +93,7 @@ A higher number of runs could give a better accuracy, but note that they are run
 Type: `Integer`
 Default value: `120`
 
-The time after which phantomas should cancel a run
+The time after which phantomas should cancel a run.
 
 #### options.openResults
 Type: `Boolean`
@@ -101,6 +101,13 @@ Default value: `false`
 
 Automatically opens the browser on the results page when the devperf task is finished.
 
+#### options.resultsFolder
+Type: `String`
+Default value: `./devperf`
+
+This is the folder where the results will be generated, including grunt-phantomas reports.
+It can be relative to your project: `./my-folder` (you might want to add this folder to your `.gitignore` file).
+Or it can be anywhere else in your file system: `/var/www/devperf`
 
 
 ### Usage Examples
@@ -120,15 +127,14 @@ grunt.initConfig({
       ],
       numberOfRuns: 5,
       timeout: 120,
-      openResults: true
+      openResults: true,
+      resultsFolder: './devperf'
     }
   }
 });
 ```
-Then, open the `/devperf/index.html` file with your browser to see the results.
+Then, open the `index.html` file with your browser to see the results. It is located in the results folder (`./devperf/`by default).
 
-The entire results (including grunt-phantomas HTML and JSON reports) are in the `/devperf` folder.
-You might want to add this folder to your .gitignore file.
 
 Results snapshot:
 ![grunt-devperf example results](https://raw.github.com/gmetais/grunt-devperf/master/demo/img/results.png)
