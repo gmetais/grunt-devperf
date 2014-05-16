@@ -38,7 +38,7 @@ $(document).ready(function() {
             data.pages[i].warnings = pageWarnings;
 
             // Graphs data fetching
-            var graphSettings = getGraphSettings();
+            var graphSettings = getGraphSettings(pageData.timingsHistory.length);
 
             var ttfb = [];
             var odrt = [];
@@ -82,7 +82,7 @@ $(document).ready(function() {
         }
     }
 
-    function getGraphSettings() {
+    function getGraphSettings(numberOfValues) {
         return $.extend(true, {}, {
             colors: ['cyan', 'white', 'yellow', 'magenta'],
             chart: {
@@ -130,7 +130,7 @@ $(document).ready(function() {
             plotOptions: {
                 line: {
                     marker: {
-                        enabled: false,
+                        enabled: (numberOfValues === 1),
                         symbol: 'diamond',
                         radius: 2,
                         states: {
