@@ -19,14 +19,14 @@ mkdir devperf
 cd devperf
 ```
 
-2) Install grunt-devperf:
-```shell
-npm install grunt-devperf
-```
-
-3) Install Grunt globally:
+2) Install Grunt globally:
 ```shell
 npm install grunt-cli -g
+```
+
+3) Install grunt-devperf locally:
+```shell
+npm install grunt-devperf
 ```
 
 4) Copy the example `Gruntfile.js` to the root of your `devperf` directory:
