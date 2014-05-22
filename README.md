@@ -11,27 +11,30 @@ Day after day, while working on your project, keep an eye on performance metrics
 
 **Use this minimalist installation if you just want to launch some quick tests.**
 
-1) You need NodeJS v0.8 or higher. Check your version:
-```shell
-node -v
-```
-If you don't have it, go to http://nodejs.org and grab the latest version.
+You need NodeJS v0.8 or higher. If you don't have it, go to http://nodejs.org and grab the latest version.
 
-2) Install Grunt globally:
+1) Create a directory for your grunt-devperf installation, anywhere you want. Let's call it `devperf`.
 ```shell
-npm install -g grunt-cli
+mkdir devperf
+cd devperf
 ```
 
-3) Create a directory for your grunt-devperf installation, anywhere you want. Let's call it `grunt-devperf`.
-
-4) Copy the following two files into your directory : [package.json](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/package.json) and [Gruntfile.js](https://github.com/gmetais/grunt-devperf/blob/master/demo/smallest-config/Gruntfile.js)
-
-5) Install grunt-devperf by launching this command from your `grunt-devperf` directory:
-```shell
-npm install
+2) Install grunt-devperf.
+``shell
+npm install grunt-devperf
 ```
 
-6) Edit `Gruntfile.js` and insert your own list of URLs.
+3) Install Grunt globally:
+```shell
+npm install grunt-cli -g
+```
+
+4) Copy the example `Gruntfile.js` to the root of your `devperf` directory.
+```shell
+cp node_modules/grunt-devperf/demo/smallest-config/Gruntfile.js .
+``
+
+5) Edit this copy of `Gruntfile.js` to insert your own list of URLs.
 
 **It's done!** You can launch your first test with this command:
 ```shell
