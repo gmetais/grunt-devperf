@@ -13,14 +13,14 @@ Day after day, while working on your project, keep an eye on performance metrics
 
 You need NodeJS v0.8 or higher. If you don't have it, go to http://nodejs.org and grab the latest version.
 
-1) Create a directory for your grunt-devperf installation, anywhere you want. Let's call it `devperf`.
+1) Create a directory for your grunt-devperf installation, anywhere you want. Let's call it `devperf`:
 ```shell
 mkdir devperf
 cd devperf
 ```
 
-2) Install grunt-devperf.
-``shell
+2) Install grunt-devperf:
+```shell
 npm install grunt-devperf
 ```
 
@@ -29,7 +29,7 @@ npm install grunt-devperf
 npm install grunt-cli -g
 ```
 
-4) Copy the example `Gruntfile.js` to the root of your `devperf` directory.
+4) Copy the example `Gruntfile.js` to the root of your `devperf` directory:
 ```shell
 cp node_modules/grunt-devperf/demo/smallest-config/Gruntfile.js .
 ``
