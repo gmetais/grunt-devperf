@@ -20,7 +20,7 @@ cd devperf
 ```
 
 2) Install grunt-devperf:
-``shell
+```shell
 npm install grunt-devperf
 ```
 
