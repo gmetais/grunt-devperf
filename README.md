@@ -34,7 +34,7 @@ npm install grunt-devperf
 cp node_modules/grunt-devperf/demo/smallest-config/Gruntfile.js .
 ```
 
-5) Edit this copy of `Gruntfile.js` to insert your own list of URLs.
+5) Then edit this copy of `Gruntfile.js` to insert your own list of URLs.
 
 **It's done!** You can launch your first test with this command:
 ```shell
