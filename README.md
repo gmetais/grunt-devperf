@@ -233,7 +233,7 @@ If you think one of these variables deserves a warning in grunt-devperf, don't h
 This project is in early stage (beta). You can help by reporting any issue, giving your feedback or coding new functionnalities.
 
 ## TODO
-- Find a way to show gziped file size
+- Find a way to show gzipped file size
 - Write tests
 
 ## Author
