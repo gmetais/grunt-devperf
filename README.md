@@ -232,10 +232,12 @@ If you think one of these variables deserves a warning in grunt-devperf, don't h
 ## Contributing
 This project is in early stage (beta). You can help by reporting any issue, giving your feedback or coding new functionnalities.
 
+
 ## TODO
 - Find a way to show gzipped file size
 - Write tests
+- Create profiles for phones and tablets (force viewport and UA, decrease some of the limits)
+
 
 ## Author
-Gaël Métais. I'm a webperf freelance based in Paris.
-If you understand french, you can visit [my website](http://www.gaelmetais.com).
+Gaël Métais. I'm a webperf freelance based in Paris. If you understand french, you can visit [my website](http://www.gaelmetais.com).
