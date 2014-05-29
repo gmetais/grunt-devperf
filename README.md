@@ -161,13 +161,13 @@ requests                  | 200     | Too many requests, i guess your site is sl
 cssCount                  | 6       | Too many CSS files, use concatenation
 jsCount                   | 12      | Too many JS files, use concatenation
 imageCount                | 30      | Too many images, use lazyloading
-smallImages               | 20      | Too many small images, build sprites
+smallImages               | 20      | Too many small images (<2kB), build sprites
 imageSize                 | 512000  | Total image size (bytes) is too high, try image optimisation
 webfontCount              | 4       | Too many custom fonts, tell the designer you don't want that
 notFound                  | 0       | Number of 404 errors
 imagesWithoutDimensions   | 5       | Number of images without dimensions
 commentsSize              | 1000    | Reduce size of comments in HTML
-whiteSpacesSize           | 5000    | Reduce the number of whitespaces in HTML
+whiteSpacesSize           | 8000    | Reduce the number of whitespaces in HTML
 DOMelementsCount          | 2000    | Reduce the number of DOM elements
 documentWriteCalls        | 0       | Remove all document.write() calls
 jsErrors                  | 0       | Number of Javascript errors

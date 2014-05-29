@@ -176,7 +176,7 @@ module.exports = function(grunt) {
       },
       {
         variable : "whiteSpacesSize",
-        limit : 5000,
+        limit : 8000,
         message: "Reduce the number of whitespaces in HTML"
       },
       {
