@@ -122,11 +122,10 @@ grunt.initConfig({
   devperf: {
     options: {
       urls: [
-        'http://www.france2.fr',
-        'http://www.france3.fr',
-        'http://www.france4.fr',
-        'http://www.france5.fr'
-        'http://www.franceo.fr'
+        'http://www.google.com',
+        'http://www.yahoo.com',
+        'http://www.github.com',
+        'http://www.facebook.com'
       ],
       numberOfRuns: 5,
       timeout: 120,
