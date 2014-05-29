@@ -1,6 +1,6 @@
 {
   "name": "grunt-devperf",
-  "description": "Helps front-end developers to maintain a good quality and good perfs, based on phantomas and grunt-phantomas.",
+  "description": "Helps front-end developers to reach a good quality and have good performances, based on phantomas and grunt-phantomas.",
   "version": "0.2.6",
   "homepage": "https://github.com/gmetais/grunt-devperf",
   "author": {
