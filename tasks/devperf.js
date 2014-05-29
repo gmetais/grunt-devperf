@@ -165,6 +165,11 @@ module.exports = function(grunt) {
         message: "Number of 404 errors"
       },
       {
+        variable : "multipleRequests",
+        limit : 1,
+        message: "Some static assets are requested multiple times"
+      },
+      {
         variable : "imagesWithoutDimensions",
         limit : 5,
         message: "Number of images without dimensions"

@@ -165,6 +165,7 @@ smallImages               | 20      | Too many small images (<2kB), build sprite
 imageSize                 | 512000  | Total image size (bytes) is too high, try image optimisation
 webfontCount              | 4       | Too many custom fonts, tell the designer you don't want that
 notFound                  | 0       | Number of 404 errors
+multipleRequests          | 1       | Some static assets are requested multiple times
 imagesWithoutDimensions   | 5       | Number of images without dimensions
 commentsSize              | 1000    | Reduce size of comments in HTML
 whiteSpacesSize           | 8000    | Reduce the number of whitespaces in HTML
