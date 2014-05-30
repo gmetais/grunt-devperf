@@ -145,6 +145,7 @@ About the results:
 - Yes it looks like a console but it's a web page!
 - Some metrics might have decimals, because they are averages of multiple runs.
 - The link to the grunt-phantomas report will give you tons of details, very helpful for debugging.
+- The files size are not reliable (sometimes gzipped, sometimes not). Check issue #6.
 
 
 
@@ -234,7 +235,6 @@ This project is in early stage (beta). You can help by reporting any issue, givi
 
 
 ## TODO
-- Find a way to show gzipped file size
 - Write tests
 - Create profiles for phones and tablets (force viewport and UA, decrease some of the limits)
 
