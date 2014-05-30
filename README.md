@@ -83,7 +83,7 @@ grunt.initConfig({
 Type: `Array of Strings`
 Default value: `['http://www.google.fr']`
 
-The list of URLs you want to test.
+The list of URLs you want to test. Don't forget the protocol (http:// or https://), even on localhost.
 
 #### options.numberOfRuns
 Type: `Integer`
