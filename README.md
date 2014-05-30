@@ -31,7 +31,7 @@ npm install grunt-devperf
 
 4) Copy the example `Gruntfile.js` to the root of your `devperf` directory:
 ```shell
-cp node_modules/grunt-devperf/demo/smallest-config/Gruntfile.js .
+cp node_modules/grunt-devperf/demo/smallest-config/Gruntfile.js ./
 ```
 
 5) Then edit this copy of `Gruntfile.js` to insert your own list of URLs.
