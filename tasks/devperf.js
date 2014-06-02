@@ -9,9 +9,6 @@
 /*jslint node: true */
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
-
 module.exports = function(grunt) {
   require('grunt-phantomas/tasks/phantomas')(grunt);
 
@@ -19,83 +16,43 @@ module.exports = function(grunt) {
     
     grunt.task.requires('phantomas');
 
-    var pages = [];
     var options = this.options({});
+    var devperfProcessor = require('./lib/devperfProcessor')(options);
+
+    // Read and process the data from the phantomas JSON files
+    var pages = [];
     options.urls.forEach(function(url) {
-      var folderName = sanitizeFolderName(url);
-
-      var page = {
-        url : url,
-        timingsHistory : [],
-        gruntPhantomasReport : folderName + '/index.html'
-      };
-    
-      var pageDataFolder = options.resultsFolder + '/' + folderName + '/data';
-      grunt.log.writeln('Looking for result files in ' + pageDataFolder);
-      
-      var pageJsonFiles = fs.readdirSync(pageDataFolder);
-
-      pageJsonFiles.sort(function(a, b) {
-        return parseInt(a, 10) < parseInt(b, 10) ? 1 : -1;
-      }).forEach(function(jsonFileName, key) {
-        if (jsonFileName.indexOf('.json') === 13) {
-          var timestamp = jsonFileName.substring(0, 13);
-
-          var filePath = pageDataFolder + '/' + jsonFileName;
-          var content = fs.readFileSync(filePath);
-          var json = JSON.parse(content);
-
-          // Avoid problems with the old json file format of grunt-phantomas (before v0.7.0) by ignoring them
-          if (json.metrics) {
-
-            // Get all metrics for most recent data
-            if (key === 0) {
-              for (var metric in json.metrics) {
-                page[metric] = json.metrics[metric].average;
-              }
-            }
-
-            // Get history for each
-            page.timingsHistory.push({
-              'timestamp': timestamp,
-              'timeToFirstByte': json.metrics.timeToFirstByte.average,
-              'onDOMReadyTime': json.metrics.onDOMReadyTime.average,
-              'windowOnLoadTime': json.metrics.windowOnLoadTime.average,
-              'httpTrafficCompleted': json.metrics.httpTrafficCompleted.average
-            });
-
-          }
-        }
-      });
-
-      pages.push(page);
+      grunt.log.writeln('Processing data for ' + url);
+      pages.push(devperfProcessor.processData(url, sanitizeFolderName(url)));
     });
-
-    // Write result file
-    fs.writeFileSync(options.resultsFolder + '/results.json', JSON.stringify({pages: pages}, null, 4));
-    grunt.log.writeln('File "' + options.resultsFolder + '/results.json' + '" created.');
-
-    // Write settings file for the front
-    var settingsFilePath = options.resultsFolder + '/settings.json';
-    fs.writeFileSync(settingsFilePath, JSON.stringify(options, null, 4));
-    grunt.log.writeln('File "' + settingsFilePath + '" created.');
 
     // Copy assets
     var frontFilesPath = __dirname + '/front';
-    grunt.file.copy(frontFilesPath + '/assets/main.js', options.resultsFolder + '/assets/main.js');
-    grunt.file.copy(frontFilesPath + '/assets/main.css', options.resultsFolder + '/assets/main.css');
-    grunt.file.copy(frontFilesPath + '/assets/interlace.png', options.resultsFolder + '/assets/interlace.png');
-    grunt.file.copy(frontFilesPath + '/assets/handlebars-v1.3.0.js', options.resultsFolder + '/assets/handlebars-v1.3.0.js');
-    grunt.file.copy(frontFilesPath + '/assets/jquery-2.1.0.min.js', options.resultsFolder + '/assets/jquery-2.1.0.min.js');
-    grunt.file.copy(frontFilesPath + '/assets/highcharts.js', options.resultsFolder + '/assets/highcharts.js');
+    var assets = ['main.js', 'main.css', 'interlace.png', 'handlebars-v1.3.0.js', 'jquery-2.1.0.min.js', 'highcharts.js'];
+    assets.forEach(function(assetName) {
+      grunt.file.copy(frontFilesPath + '/assets/' + assetName, options.resultsFolder + '/assets/' + assetName);
+    });
     grunt.log.writeln('Assets copied.');
 
+    // Write result file
+    var resultsFilePath = options.resultsFolder + '/results.json';
+    var resultsJSON = JSON.stringify({pages: pages}, null, 4);
+    grunt.file.write(resultsFilePath, resultsJSON);
+    grunt.log.writeln('File "' + resultsFilePath + '" created.');
+
+    // Write settings file for the front
+    var settingsFilePath = options.resultsFolder + '/settings.json';
+    var settingsJSON = JSON.stringify(options, null, 4);
+    grunt.file.write(settingsFilePath, settingsJSON);
+    grunt.log.writeln('File "' + settingsFilePath + '" created.');
+
     // Write index.html
-    var indexHtml = grunt.file.read(frontFilesPath + '/index.html');
-    indexHtml = indexHtml.replace('/*%%RESULTS%%*/', 'var results = ' + JSON.stringify({pages: pages}, null, 4));
-    indexHtml = indexHtml.replace('/*%%SETTINGS%%*/', 'var settings = ' + JSON.stringify(options, null, 4));
     var indexPath = options.resultsFolder + '/index.html';
+    var indexHtml = grunt.file.read(frontFilesPath + '/index.html');
+    indexHtml = indexHtml.replace('/*%%RESULTS%%*/', 'var results = ' + resultsJSON);
+    indexHtml = indexHtml.replace('/*%%SETTINGS%%*/', 'var settings = ' + settingsJSON);
     grunt.file.write(indexPath, indexHtml);
+    grunt.log.writeln('File "' + indexPath + '" created.');
 
     // Open the index.html file in browser (option)
     if (options.openResults) {
