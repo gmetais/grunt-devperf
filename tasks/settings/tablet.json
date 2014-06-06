@@ -1,0 +1,102 @@
+[
+  {
+    "variable" : "requests",
+    "limit" : 150,
+    "message": "Too many requests, i guess your site is slow, isn't it?"
+  },
+  {
+    "variable" : "cssCount",
+    "limit" : 5,
+    "message": "Too many CSS files, use concatenation"
+  },
+  {
+    "variable" : "jsCount",
+    "limit" : 10,
+    "message": "Too many JS files, use concatenation"
+  },
+  {
+    "variable" : "imageCount",
+    "limit" : 25,
+    "message": "Too many images, use lazyloading"
+  },
+  {
+    "variable" : "smallImages",
+    "limit" : 15,
+    "message": "Too many small images, build sprites"
+  },
+  {
+    "variable" : "imageSize",
+    "limit" : 400000,
+    "message": "Total image size (bytes) is too high, try image optimisation"
+  },
+  {
+    "variable" : "webfontCount",
+    "limit" : 3,
+    "message": "Too many custom fonts, tell the designer you don't want that"
+  },
+  {
+    "variable" : "notFound",
+    "limit" : 0,
+    "message": "Number of 404 errors"
+  },
+  {
+    "variable" : "multipleRequests",
+    "limit" : 1,
+    "message": "Some static assets are requested multiple times"
+  },
+  {
+    "variable" : "imagesWithoutDimensions",
+    "limit" : 5,
+    "message": "Number of images without dimensions"
+  },
+  {
+    "variable" : "commentsSize",
+    "limit" : 750,
+    "message": "Reduce size of comments in HTML"
+  },
+  {
+    "variable" : "whiteSpacesSize",
+    "limit" : 6000,
+    "message": "Reduce the number of whitespaces in HTML"
+  },
+  {
+    "variable" : "DOMelementsCount",
+    "limit" : 1500,
+    "message": "Reduce the number of DOM elements"
+  },
+  {
+    "variable" : "documentWriteCalls",
+    "limit" : 0,
+    "message": "Remove all document.write() calls"
+  },
+  {
+    "variable" : "jsErrors",
+    "limit" : 0,
+    "message": "Number of Javascript errors"
+  },
+  {
+    "variable" : "DOMqueries",
+    "limit" : 150,
+    "message": "Reduce number of DOM queries"
+  },
+  {
+    "variable" : "DOMqueriesDuplicated",
+    "limit" : 20,
+    "message": "Many duplicated DOM queries, try to save results into variables"
+  },
+  {
+    "variable" : "DOMinserts",
+    "limit" : 75,
+    "message": "Reduce number of DOM insertions"
+  },
+  {
+    "variable" : "jQuerySizzleCalls",
+    "limit" : 200,
+    "message": "Reduce number of Sizzle calls (= jQuery DOM queries)"
+  },
+  {
+    "variable" : "headersSentSize",
+    "limit" : 15000,
+    "message": "Reduce size of headers sent (cookies?)"
+  }
+]
