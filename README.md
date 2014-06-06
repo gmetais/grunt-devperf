@@ -155,29 +155,29 @@ About the results:
 
 When a metric is greater than the limit, the message is displayed.
 
-Metric                    | Limit   | Message
---------------------------|:-------:|--------------------------------------------------------------------
-requests                  | 200     | Too many requests, i guess your site is slow, isn't it?
-cssCount                  | 6       | Too many CSS files, use concatenation
-jsCount                   | 12      | Too many JS files, use concatenation
-imageCount                | 30      | Too many images, use lazyloading
-smallImages               | 20      | Too many small images (<2kB), build sprites
-imageSize                 | 512000  | Total image size (bytes) is too high, try image optimisation
-webfontCount              | 4       | Too many custom fonts, tell the designer you don't want that
-notFound                  | 0       | Number of 404 errors
-multipleRequests          | 1       | Some static assets are requested multiple times
-imagesWithoutDimensions   | 5       | Number of images without dimensions
-commentsSize              | 1000    | Reduce size of comments in HTML
-whiteSpacesSize           | 8000    | Reduce the number of whitespaces in HTML
-DOMelementsCount          | 2000    | Reduce the number of DOM elements
-documentWriteCalls        | 0       | Remove all document.write() calls
-jsErrors                  | 0       | Number of Javascript errors
-consoleMessages           | 0       | Remove console.log or console.*whatever*
-DOMqueries                | 200     | Reduce number of DOM queries
-DOMqueriesDuplicated      | 30      | Many duplicated DOM queries, try to save results into variables
-DOMinserts                | 100     | Reduce number of DOM insertions
-jQuerySizzleCalls         | 300     | Reduce number of Sizzle calls (= jQuery DOM queries)
-headersSentSize           | 20000   | Reduce size of headers sent (cookies?)
+Metric                    | Desktop | Tablet  | Mobile  | Message
+--------------------------|:-------:|:-------:|:-------:|--------------------------------------------------------------------
+requests                  | 200     | 150     | 100     | Too many requests, i guess your site is slow, isn't it?
+cssCount                  | 6       | 5       | 3       | Too many CSS files, use concatenation
+jsCount                   | 12      | 10      | 6       | Too many JS files, use concatenation
+imageCount                | 30      | 25      | 15      | Too many images, use lazyloading
+smallImages               | 20      | 15      | 10      | Too many small images (<2kB), build sprites
+imageSize                 | 512000  | 400000  | 256000  | Total image size (bytes) is too high, try image optimisation
+webfontCount              | 4       | 3       | 2       | Too many custom fonts, tell the designer you don't want that
+notFound                  | 0       | 0       | 0       | Number of 404 errors
+multipleRequests          | 1       | 1       | 1       | Some static assets are requested multiple times
+imagesWithoutDimensions   | 5       | 5       | 5       | Number of images without dimensions
+commentsSize              | 1000    | 800     | 600     | Reduce size of comments in HTML
+whiteSpacesSize           | 8000    | 6000    | 4000    | Reduce the number of whitespaces in HTML
+DOMelementsCount          | 2000    | 1500    | 1000    | Reduce the number of DOM elements
+documentWriteCalls        | 0       | 0       | 0       | Remove all document.write() calls
+jsErrors                  | 0       | 0       | 0       | Number of Javascript errors
+consoleMessages           | 0       | NA      | NA      | Remove console.log or console.*whatever*, they can break IE8
+DOMqueries                | 200     | 150     | 100     | Reduce number of DOM queries
+DOMqueriesDuplicated      | 30      | 20      | 15      | Many duplicated DOM queries, try to save results into variables
+DOMinserts                | 100     | 75      | 50      | Reduce number of DOM insertions
+jQuerySizzleCalls         | 300     | 200     | 150     | Reduce number of Sizzle calls (= jQuery DOM queries)
+headersSentSize           | 20000   | 15000   | 10000   | Reduce size of headers sent (cookies?)
 
 
 #### Modifying the warnings
