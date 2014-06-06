@@ -155,7 +155,7 @@ About the results:
 
 When a metric is greater than the limit, the message is displayed.
 
-Metric                    | Desktop | Tablet  | Mobile  | Message
+Metric                    | Desktop | Tablet  | Phone   | Message
 --------------------------|:-------:|:-------:|:-------:|--------------------------------------------------------------------
 requests                  | 200     | 150     | 100     | Too many requests, i guess your site is slow, isn't it?
 cssCount                  | 6       | 5       | 3       | Too many CSS files, use concatenation
