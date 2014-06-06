@@ -32,19 +32,16 @@ module.exports = function(grunt) {
     assets.forEach(function(assetName) {
       grunt.file.copy(frontFilesPath + '/assets/' + assetName, options.resultsFolder + '/assets/' + assetName);
     });
-    grunt.log.writeln('Assets copied.');
 
     // Write result file
     var resultsFilePath = options.resultsFolder + '/results.json';
     var resultsJSON = JSON.stringify({pages: pages}, null, 4);
     grunt.file.write(resultsFilePath, resultsJSON);
-    grunt.log.writeln('File "' + resultsFilePath + '" created.');
 
     // Write settings file for the front
     var settingsFilePath = options.resultsFolder + '/settings.json';
     var settingsJSON = JSON.stringify(options, null, 4);
     grunt.file.write(settingsFilePath, settingsJSON);
-    grunt.log.writeln('File "' + settingsFilePath + '" created.');
 
     // Write index.html
     var indexPath = options.resultsFolder + '/index.html';
