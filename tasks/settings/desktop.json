@@ -77,7 +77,7 @@
   {
     "variable" : "consoleMessages",
     "limit" : 0,
-    "message": "Remove console.log or console.*whatever*, they can break Internet Explorer 8"
+    "message": "Remove console.log or console.*whatever*, they can break IE8"
   },
   {
     "variable" : "DOMqueries",

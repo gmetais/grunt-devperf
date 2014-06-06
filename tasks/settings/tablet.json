@@ -51,7 +51,7 @@
   },
   {
     "variable" : "commentsSize",
-    "limit" : 750,
+    "limit" : 800,
     "message": "Reduce size of comments in HTML"
   },
   {
