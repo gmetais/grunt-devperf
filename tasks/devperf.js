@@ -120,7 +120,8 @@ module.exports = function(grunt) {
       numberOfRuns: 5,
       timeout: 120,
       openResults: false,
-      resultsFolder: './devperf'
+      resultsFolder: './devperf',
+      phantomasOptions: {}
     });
 
     var defaultWarnings = [
@@ -256,16 +257,16 @@ module.exports = function(grunt) {
     // Inject the phantomas config into grunt config
     var phantomasConfig = {};
     options.urls.forEach(function(url) {
-      phantomasConfig[sanitizeFolderName(url)] = {
+      var runConfig = {
         options: {
           indexPath: options.resultsFolder + '/' + sanitizeFolderName(url) + '/',
           url: url,
           numberOfRuns: options.numberOfRuns,
-          options: {
-            timeout: options.timeout
-          }
+          options: options.phantomasOptions
         }
       };
+      runConfig.options.options.timeout = options.timeout;
+      phantomasConfig[sanitizeFolderName(url)] = runConfig;
     });
     grunt.config.set('phantomas', phantomasConfig);
     grunt.task.run('phantomas');
