@@ -85,6 +85,14 @@ Default value: `['http://www.google.fr']`
 
 The list of URLs you want to test. Don't forget the protocol (http:// or https://), even on localhost.
 
+#### options.device
+Type: `String`
+Default value: `desktop`
+
+The type of device that will be emulated, by using a different user-agent and viewport size. The limits are also different between devices (see the warnings list below). Possible values are: `desktop`, `tablet`, `phone` and `all`.
+
+By using `all`, you will be able to compare results between devices. This is great if you care about having a mobile-fast responsive website!
+
 #### options.numberOfRuns
 Type: `Integer`
 Default value: `5`
@@ -127,6 +135,7 @@ grunt.initConfig({
         'http://www.github.com',
         'http://www.facebook.com'
       ],
+      device: 'mobile',
       numberOfRuns: 5,
       timeout: 120,
       openResults: true,
@@ -182,7 +191,7 @@ headersSentSize           | 20000   | 15000   | 10000   | Reduce size of headers
 
 #### Modifying the warnings
 
-In the Gruntfile, you can change any of them by adding a `warnings` option this way:
+In the Gruntfile, you can change any of them by adding a `**device**Warnings` option this way:
 
 ```js
 grunt.initConfig({
@@ -191,7 +200,10 @@ grunt.initConfig({
       urls: [
         'http://www.google.com'
       ],
-      warnings: [
+      device: 'desktop',
+
+      // This is for desktop. Use 'tabletWarnings' or 'phoneWarnings' for the other devices.
+      desktopWarnings: [
         {
           // Changing the limit for this variable
           variable : "jsErrors",
