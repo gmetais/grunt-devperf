@@ -235,7 +235,7 @@ If you think one of these variables deserves a warning in grunt-devperf, don't h
 Type: `Object`
 Default value: `{}`
 
-Use this if you need to send parameters to `phantomas`. You can find the list of parameters [here](https://github.com/macbre/phantomas#parameters). You can enable features such as proxy, authentification or domain blocking. Some over features won't be compatible with grunt-devperf.
+Use this if you need to send parameters to `phantomas`. You can find the list of parameters [here](https://github.com/macbre/phantomas#parameters). You can enable features such as proxy, authentification or domain blocking. Warning: some features can break grunt-devperf.
 
 Example:
 ```js
