@@ -254,6 +254,14 @@ module.exports = function(grunt) {
       }
     });
 
+    // Copy these warnings to the grunt-phantomas assertions style
+    var phantomasAssertions = {};
+    options.warnings.forEach(function(warning) {
+      if (warning.limit > 0) {
+        phantomasAssertions[warning.variable] = warning.limit;
+      }
+    });
+
     // Inject the phantomas config into grunt config
     var phantomasConfig = {};
     options.urls.forEach(function(url) {
@@ -262,7 +270,8 @@ module.exports = function(grunt) {
           indexPath: options.resultsFolder + '/' + sanitizeFolderName(url) + '/',
           url: url,
           numberOfRuns: options.numberOfRuns,
-          options: options.phantomasOptions
+          options: options.phantomasOptions,
+          assertions: phantomasAssertions
         }
       };
       runConfig.options.options.timeout = options.timeout;
