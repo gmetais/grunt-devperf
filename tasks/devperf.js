@@ -51,7 +51,7 @@ module.exports = function(grunt) {
             // Get all metrics for most recent data
             if (key === 0) {
               for (var metric in json.metrics) {
-                page[metric] = json.metrics[metric].average;
+                page[metric] = json.metrics[metric].median;
               }
             }
 
