@@ -12,6 +12,9 @@
 module.exports = function(grunt) {
   require('grunt-phantomas/tasks/phantomas')(grunt);
 
+  /**
+   * This grunt task is added automatically inside the grunt config
+   */
   grunt.registerTask('devperfAfter', 'Task to run after phantomas', function() {
     
     grunt.task.requires('phantomas');
@@ -39,7 +42,9 @@ module.exports = function(grunt) {
   });
 
 
-  // Executes the sequence (phantomas, then devperf)
+  /**
+   * This grunt task reads the config and creates the phantomas task (and the devperfAfter task)
+   */
   grunt.registerTask('devperf', 'Helps front-end developers to maintain a good quality, based on phantomas and grunt-phantomas.', function() {
 
     // Merge task-specific and/or target-specific options with these defaults
@@ -58,7 +63,7 @@ module.exports = function(grunt) {
     });
 
     // Merge user defined warnings with defaults
-    
+    mergeWarningsLists(options);
 
     // Check correct usage of options.device
     if (options.device !== 'desktop' && options.device !== 'tablet' && options.device !== 'phone' && options.device !== 'all') {
