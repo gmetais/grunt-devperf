@@ -41,7 +41,7 @@ function DevperfProcessor(options) {
         // Get all metrics for most recent data
         if (key === 0) {
           for (var metric in phantomasReport.json.metrics) {
-            page[metric] = phantomasReport.json.metrics[metric].average;
+            page[metric] = phantomasReport.json.metrics[metric].median;
           }
         }
 
