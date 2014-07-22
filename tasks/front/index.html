@@ -30,9 +30,9 @@
                     *<br>
                     <div class="timeCompare">
                         <div>* <br>* </div>
-                        <div class="left"><h3>Total time</h3><div>{{round windowOnLoadTime}}ms</div></div>
+                        <div class="left"><h3>Total time</h3><div>{{round domComplete}}ms</div></div>
                         <div class="meter">
-                            {{meter timeFrontendInMs windowOnLoadTime 2000 6000}}
+                            {{meter timeFrontendInMs domComplete 2000 6000}}
                         </div>
                         <div class="right"><h3>Frontend time</h3><div>{{round timeFrontendInMs}}ms</div></div>
                     </div>
@@ -46,8 +46,8 @@
                         <div class="legend">
                             * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <span class="cyan">timeToFirstByte</span>&nbsp;&nbsp;
-                            <span class="white">onDOMReadyTime</span>&nbsp;&nbsp;
-                            <span class="yellow">windowOnLoadTime</span>&nbsp;&nbsp;
+                            <span class="white">domInteractive</span>&nbsp;&nbsp;
+                            <span class="yellow">domComplete</span>&nbsp;&nbsp;
                             <span class="magenta">httpTrafficCompleted</span>
                         </div>
                     </div>
