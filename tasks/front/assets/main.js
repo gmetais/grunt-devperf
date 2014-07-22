@@ -22,7 +22,7 @@ $(document).ready(function() {
             var pageData = data.pages[i];
             
             // Front end time (in ms) calculation
-            data.pages[i].timeFrontendInMs = pageData.windowOnLoadTime - pageData.timeToFirstByte;
+            data.pages[i].timeFrontendInMs = (pageData.windowOnLoadTime || pageData.domComplete) - pageData.timeToFirstByte;
 
             // Warnings calculations
             var pageWarnings = [];
@@ -46,8 +46,8 @@ $(document).ready(function() {
             var htcd = [];
             for (j=0, jmax=pageData.timingsHistory.length; j<jmax ; j++) {
                 ttfb.push([pageData.timingsHistory[j].timestamp, pageData.timingsHistory[j].timeToFirstByte]);
-                odrt.push([pageData.timingsHistory[j].timestamp, pageData.timingsHistory[j].onDOMReadyTime]);
-                wolt.push([pageData.timingsHistory[j].timestamp, pageData.timingsHistory[j].windowOnLoadTime]);
+                odrt.push([pageData.timingsHistory[j].timestamp, pageData.timingsHistory[j].onDOMReadyTime || pageData.timingsHistory[j].domInteractive]);
+                wolt.push([pageData.timingsHistory[j].timestamp, pageData.timingsHistory[j].windowOnLoadTime || pageData.timingsHistory[j].domComplete]);
                 htcd.push([pageData.timingsHistory[j].timestamp, pageData.timingsHistory[j].httpTrafficCompleted]);
             }
             ttfb.reverse();
