@@ -23,8 +23,7 @@ module.exports = function(grunt) {
     devperf: {
       options: {
         urls: [
-          'http://www.google.com',
-          'http://www.yahoo.com'
+          'http://www.telerama.fr/'
         ],
         openResults: true
       }

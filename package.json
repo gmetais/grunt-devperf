@@ -26,15 +26,15 @@
   },
   "devDependencies": {
     "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-nodeunit": "^0.3.3",
-    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-nodeunit": "^0.4.1",
+    "grunt-contrib-clean": "^0.6.0",
     "grunt": "^0.4.4"
   },
   "peerDependencies": {
     "grunt": "^0.4.4"
   },
   "dependencies": {
-    "grunt-phantomas": "0.7.1",
+    "grunt-phantomas": "0.10.0",
     "grunt-open": "^0.2.3"
   },
   "keywords": [

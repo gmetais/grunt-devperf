@@ -13,6 +13,44 @@ module.exports = function(grunt) {
   require('grunt-phantomas/tasks/phantomas')(grunt);
 
   /**
+   * This grunt task reads the config and creates the phantomas task (and the devperfAfter task)
+   */
+  grunt.registerTask('devperf', 'Helps front-end developers to maintain a good quality, based on phantomas and grunt-phantomas.', function() {
+
+    // Merge task-specific and/or target-specific options with these defaults
+    var options = this.options({
+      urls: [
+        'http://www.google.fr'
+      ],
+      desktopWarnings: [],
+      tabletWarnings: [],
+      phoneWarnings: [],
+      numberOfRuns: 5,
+      timeout: 120,
+      openResults: false,
+      resultsFolder: './devperf',
+      device: 'desktop',
+      phantomasOptions: {}
+    });
+
+    // Merge user defined warnings with defaults
+    mergeWarningsLists(options);
+
+    // Check correct usage of options.device
+    if (options.device !== 'desktop' && options.device !== 'tablet' && options.device !== 'phone' && options.device !== 'all') {
+      grunt.fail.warn('Unknown device "' + options.device + '". Choose one of these: [desktop tablet phone all].');
+    }
+
+    // Inject the phantomas config into grunt config
+    grunt.config.set('phantomas', generatePhantomasConfig(options));
+    grunt.task.run('phantomas');
+
+    // Inject the config into devperfAfter task
+    grunt.config.set('devperfAfter', {options: options});
+    grunt.task.run('devperfAfter');
+  });
+
+  /**
    * This grunt task is added automatically inside the grunt config
    */
   grunt.registerTask('devperfAfter', 'Task to run after phantomas', function() {
@@ -39,44 +77,6 @@ module.exports = function(grunt) {
       grunt.config.set('open.devperf_auto_task', {path: resultFilePath});
       grunt.task.run('open:devperf_auto_task');
     }
-  });
-
-
-  /**
-   * This grunt task reads the config and creates the phantomas task (and the devperfAfter task)
-   */
-  grunt.registerTask('devperf', 'Helps front-end developers to maintain a good quality, based on phantomas and grunt-phantomas.', function() {
-
-    // Merge task-specific and/or target-specific options with these defaults
-    var options = this.options({
-      urls: [
-        'http://www.google.fr'
-      ],
-      desktopWarnings: [],
-      tabletWarnings: [],
-      phoneWarnings: [],
-      numberOfRuns: 5,
-      timeout: 120,
-      openResults: false,
-      resultsFolder: './devperf',
-      device: 'desktop'
-    });
-
-    // Merge user defined warnings with defaults
-    mergeWarningsLists(options);
-
-    // Check correct usage of options.device
-    if (options.device !== 'desktop' && options.device !== 'tablet' && options.device !== 'phone' && options.device !== 'all') {
-      grunt.fail.warn('Unknown device "' + options.device + '". Choose one of these: [desktop tablet phone all].');
-    }
-
-    // Inject the phantomas config into grunt config
-    grunt.config.set('phantomas', generatePhantomasConfig(options));
-    grunt.task.run('phantomas');
-
-    // Inject the config into devperfAfter task
-    grunt.config.set('devperfAfter', {options: options});
-    grunt.task.run('devperfAfter');
   });
 };
 

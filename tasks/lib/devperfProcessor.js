@@ -18,6 +18,45 @@ function DevperfProcessor(options) {
   var devperfProcessorFunctions = {
 
     /**
+     * Reads every JSON files from one grunt-phantomas results folder
+     * 
+     * @param {String} gruntPhantomasFolder Path to a grunt-phantomas results folder
+     * 
+     * @return An object with all results
+     */
+    readPhantomasJSONFiles : function(gruntPhantomasFolder) {
+      var results = [];
+      
+      // Look into the folder
+      var pageJsonFiles = fs.readdirSync(gruntPhantomasFolder);
+
+      // Sort by timestamp
+      pageJsonFiles.sort(function(a, b) {
+        return parseInt(a, 10) < parseInt(b, 10) ? 1 : -1;
+      });
+
+      pageJsonFiles.forEach(function(jsonFileName, key) {
+        
+        // Filter JSON files
+        if (jsonFileName.indexOf('.json') === 13) {
+
+          var timestamp = jsonFileName.substring(0, 13);
+          var filePath = gruntPhantomasFolder + '/' + jsonFileName;
+          var content = fs.readFileSync(filePath);
+          var json = JSON.parse(content);
+
+
+          results.push({
+            timestamp: timestamp,
+            json: json
+          });
+
+        }
+      });
+      return results;
+    },
+
+    /**
      * Creates all the data needed by the display for one URL
      * 
      * @param {String} url The tested URL
@@ -57,45 +96,6 @@ function DevperfProcessor(options) {
       });
 
       return page;
-    },
-
-    /**
-     * Reads every JSON files from one grunt-phantomas results folder
-     * 
-     * @param {String} gruntPhantomasFolder Path to a grunt-phantomas results folder
-     * 
-     * @return An object with all results
-     */
-    readPhantomasJSONFiles : function(gruntPhantomasFolder) {
-      var results = [];
-      
-      // Look into the folder
-      var pageJsonFiles = fs.readdirSync(gruntPhantomasFolder);
-
-      // Sort by timestamp
-      pageJsonFiles.sort(function(a, b) {
-        return parseInt(a, 10) < parseInt(b, 10) ? 1 : -1;
-      });
-
-      pageJsonFiles.forEach(function(jsonFileName, key) {
-        
-        // Filter JSON files
-        if (jsonFileName.indexOf('.json') === 13) {
-
-          var timestamp = jsonFileName.substring(0, 13);
-          var filePath = gruntPhantomasFolder + '/' + jsonFileName;
-          var content = fs.readFileSync(filePath);
-          var json = JSON.parse(content);
-
-
-          results.push({
-            timestamp: timestamp,
-            json: json
-          });
-
-        }
-      });
-      return results;
     },
 
     /**

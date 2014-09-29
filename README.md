@@ -241,6 +241,31 @@ You can find the complete list of Phantomas variables and their descriptions [he
 If you think one of these variables deserves a warning in grunt-devperf, don't hesitate to open an issue!
 
 
+### Advanced Phantomas options
+
+#### options.phantomasOptions
+Type: `Object`
+Default value: `{}`
+
+Use this if you need to send parameters to `phantomas`. You can find the list of parameters [here](https://github.com/macbre/phantomas#parameters). You can enable some features such as proxy, authentification or domain blocking.
+
+Example:
+```js
+grunt.initConfig({
+  devperf: {
+    options: {
+      urls: [
+        'http://www.google.com'
+      ],
+      phantomasOptions: {
+        'proxy': 'localhost:8080',
+        'no-externals': true
+      }
+    }
+  }
+});
+```
+
 
 ## Contributing
 This project is in early stage (beta). You can help by reporting any issue, giving your feedback or coding new functionnalities.
