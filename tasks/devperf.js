@@ -59,8 +59,8 @@ module.exports = function(grunt) {
             page.timingsHistory.push({
               'timestamp': timestamp,
               'timeToFirstByte': json.metrics.timeToFirstByte.average,
-              'onDOMReadyTime': json.metrics.onDOMReadyTime.average,
-              'windowOnLoadTime': json.metrics.windowOnLoadTime.average,
+              'domInteractive': (json.metrics.domInteractive || json.metrics.onDOMReadyTime).average,
+              'domComplete': (json.metrics.domComplete || json.metrics.windowOnLoadTime).average,
               'httpTrafficCompleted': json.metrics.httpTrafficCompleted.average
             });
 
