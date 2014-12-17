@@ -1,7 +1,7 @@
 {
   "name": "grunt-devperf",
   "description": "Helps front-end developers to reach a good quality good performances, based on phantomas and grunt-phantomas.",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "homepage": "https://github.com/gmetais/grunt-devperf",
   "author": {
     "name": "Gaël Métais",
