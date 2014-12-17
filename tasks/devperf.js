@@ -289,8 +289,8 @@ module.exports = function(grunt) {
 function sanitizeFolderName(path) {
   var folderName = path.replace(/[\/\.\?\:\-\&\%\=]/g, '');
   // Shorten name if it's too long
-  if (folderName.length > 50) {
-    folderName = folderName.substring(0, 50);
+  if (folderName.length > 100) {
+    folderName = folderName.substring(0, 100);
   }
   return folderName;
 }
