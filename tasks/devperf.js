@@ -35,36 +35,36 @@ module.exports = function(grunt) {
       
       var pageJsonFiles = fs.readdirSync(pageDataFolder);
 
-      pageJsonFiles.sort(function(a, b) {
+      pageJsonFiles.filter(function(file){
+        return file.indexOf('.json') == 13;
+      }).sort(function(a, b) {
         return parseInt(a, 10) < parseInt(b, 10) ? 1 : -1;
       }).forEach(function(jsonFileName, key) {
-        if (jsonFileName.indexOf('.json') === 13) {
-          var timestamp = jsonFileName.substring(0, 13);
+        var timestamp = jsonFileName.substring(0, 13);
 
-          var filePath = pageDataFolder + '/' + jsonFileName;
-          var content = fs.readFileSync(filePath);
-          var json = JSON.parse(content);
+        var filePath = pageDataFolder + '/' + jsonFileName;
+        var content = fs.readFileSync(filePath);
+        var json = JSON.parse(content);
 
-          // Avoid problems with the old json file format of grunt-phantomas (before v0.7.0) by ignoring them
-          if (json.metrics) {
+        // Avoid problems with the old json file format of grunt-phantomas (before v0.7.0) by ignoring them
+        if (json.metrics) {
 
-            // Get all metrics for most recent data
-            if (key === 0) {
-              for (var metric in json.metrics) {
-                page[metric] = json.metrics[metric].median;
-              }
+          // Get all metrics for most recent data
+          if (key === 0) {
+            for (var metric in json.metrics) {
+              page[metric] = json.metrics[metric].median;
             }
-
-            // Get history for each
-            page.timingsHistory.push({
-              'timestamp': timestamp,
-              'timeToFirstByte': json.metrics.timeToFirstByte.average,
-              'domInteractive': (json.metrics.domInteractive || json.metrics.onDOMReadyTime).average,
-              'domComplete': (json.metrics.domComplete || json.metrics.windowOnLoadTime).average,
-              'httpTrafficCompleted': json.metrics.httpTrafficCompleted.average
-            });
-
           }
+
+          // Get history for each
+          page.timingsHistory.push({
+            'timestamp': timestamp,
+            'timeToFirstByte': json.metrics.timeToFirstByte.average,
+            'domInteractive': (json.metrics.domInteractive || json.metrics.onDOMReadyTime).average,
+            'domComplete': (json.metrics.domComplete || json.metrics.windowOnLoadTime).average,
+            'httpTrafficCompleted': json.metrics.httpTrafficCompleted.average
+          });
+
         }
       });
 
