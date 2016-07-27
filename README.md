@@ -1,5 +1,10 @@
 # grunt-devperf
 
+
+## Important!
+**This project is not maintained anymore.** Please have a look at [Yellow Lab Tools](https://github.com/gmetais/YellowLabTools) and [grunt-yellowlabtools](https://github.com/gmetais/grunt-yellowlabtools) for replacements.
+
+
 Helps front-end developers to reach a good quality and good performances, based on [phantomas](https://github.com/macbre/phantomas) and [grunt-phantomas](https://github.com/stefanjudis/grunt-phantomas).
 
 Day after day, while working on your project, keep an eye on performance metrics and get warnings for things you should optimize.
@@ -265,4 +270,4 @@ This project is in early stage (beta). You can help by reporting any issue, givi
 
 
 ## Author
-Gaël Métais. I'm a webperf freelance based in Paris. If you understand french, you can visit [my website](http://www.gaelmetais.com).
+Gaël Métais. I'm a webperf freelance based in Paris. I can also help your company about Web Performances, visit [my website](http://www.gaelmetais.com).
