@@ -270,4 +270,4 @@ This project is in early stage (beta). You can help by reporting any issue, givi
 
 
 ## Author
-Gaël Métais. I'm a webperf freelance based in Paris. I can also help your company about Web Performances, visit [my website](http://www.gaelmetais.com).
+Gaël Métais. I'm a webperf freelance based in Paris. I can also help your company about Web Performances, visit [my website](https://www.gaelmetais.com).
